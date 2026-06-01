@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import BottomNav from '../components/BottomNav'
+import TopBar from '../components/TopBar'
 import BottomSheet from '../components/BottomSheet'
 import PageWrapper from '../components/PageWrapper'
 import { useAppStore } from '../store/useAppStore'
@@ -120,26 +121,9 @@ export default function Home() {
   return (
     <PageWrapper>
       <div className="bg-temple-ivory text-granite font-body-md antialiased min-h-screen pb-24 selection:bg-pandya-gold/20">
-        {/* Header */}
-        <header className="w-full top-0 sticky bg-surface z-40 border-b border-outline-variant/20">
-          <div className="flex justify-between items-center px-4 py-2 max-w-full">
-            <button
-              aria-label="Menu"
-              className="p-2 hover:bg-surface-variant rounded-full active:scale-95 duration-150 transition-colors focus:outline-none"
-            >
-              <span className="material-symbols-outlined text-madder-red">menu</span>
-            </button>
-            <h1 className="font-headline-sm text-headline-sm text-primary">Idesi Notes</h1>
-            <button
-              aria-label="More options"
-              className="p-2 hover:bg-surface-variant rounded-full active:scale-95 duration-150 transition-colors focus:outline-none"
-            >
-              <span className="material-symbols-outlined text-madder-red">more_vert</span>
-            </button>
-          </div>
-        </header>
+        <TopBar title="Idesi Notes" />
 
-        <main className="px-md md:px-margin max-w-5xl mx-auto space-y-xl pt-lg">
+        <main className="px-4 max-w-5xl mx-auto space-y-8 pt-6">
 
           {/* Header section */}
           <section className="space-y-2">
