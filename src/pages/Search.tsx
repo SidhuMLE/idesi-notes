@@ -55,7 +55,7 @@ export default function Search() {
         {/* Header */}
         <header className="w-full top-0 sticky z-40 bg-temple-ivory border-b border-pandya-gold/10 flex justify-between items-center px-4 py-2">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => { sessionStorage.setItem('nav-direction', 'back'); navigate(-1) }}
             className="text-granite p-2 rounded-full hover:bg-sandstone active:scale-95"
           >
             <span className="material-symbols-outlined">arrow_back</span>

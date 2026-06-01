@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { useBackButton } from './hooks/useBackButton'
 import Home from './pages/Home'
 import Areas from './pages/Areas'
 import SectionDetail from './pages/SectionDetail'
@@ -11,6 +12,8 @@ import NewEditArea from './pages/NewEditArea'
 
 function AnimatedRoutes() {
   const location = useLocation()
+  useBackButton()
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>

@@ -140,7 +140,7 @@ export default function SectionDetail() {
         <header className="w-full top-0 sticky bg-surface z-40 border-b border-outline-variant/20">
           <div className="flex justify-between items-center px-4 py-2">
             <button
-              onClick={() => navigate(-1)}
+              onClick={() => { sessionStorage.setItem('nav-direction', 'back'); navigate(-1) }}
               className="text-madder-red active:scale-95 duration-150 p-2 rounded-full"
               aria-label="Go back"
             >

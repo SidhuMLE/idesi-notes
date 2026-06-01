@@ -37,7 +37,7 @@ export default function NoteEditor() {
       <div className="bg-temple-ivory h-screen flex flex-col text-on-surface overflow-hidden">
         <header className="bg-surface border-b border-outline-variant/20 w-full top-0 sticky flex justify-between items-center px-4 py-2 z-10">
           <motion.button
-            onClick={() => navigate(-1)}
+            onClick={() => { sessionStorage.setItem('nav-direction', 'back'); navigate(-1) }}
             whileTap={{ scale: 0.90 }}
             className="text-madder-red p-2 -ml-2 rounded-full hover:bg-surface-variant"
           >
@@ -56,6 +56,7 @@ export default function NoteEditor() {
           <motion.button
             onClick={() => {
               deleteNote(noteId!)
+              sessionStorage.setItem('nav-direction', 'back')
               navigate(-1)
             }}
             whileTap={{ scale: 0.90 }}

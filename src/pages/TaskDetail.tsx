@@ -49,7 +49,7 @@ export default function TaskDetail() {
         {/* Top bar */}
         <header className="w-full top-0 sticky bg-surface border-b border-outline-variant/20 z-50 flex justify-between items-center px-4 py-2">
           <motion.button
-            onClick={() => navigate(-1)}
+            onClick={() => { sessionStorage.setItem('nav-direction', 'back'); navigate(-1) }}
             whileTap={{ scale: 0.90 }}
             className="text-madder-red hover:text-primary p-2 -ml-2 rounded-full"
           >
@@ -202,6 +202,7 @@ export default function TaskDetail() {
             <button
               onClick={() => {
                 deleteTask(taskId!)
+                sessionStorage.setItem('nav-direction', 'back')
                 navigate(-1)
               }}
               className="flex-1 py-3 bg-error text-white rounded-lg font-label-md text-label-md"

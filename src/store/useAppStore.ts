@@ -1,6 +1,7 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import type { Section, Task, Note } from '../types'
+import capacitorStorage from './capacitorStorage'
 
 function uid() {
   return crypto.randomUUID()
@@ -143,6 +144,6 @@ export const useAppStore = create<AppStore>()(
       openTaskCountBySection: (sectionId) =>
         get().tasks.filter((t) => t.section_id === sectionId && t.status !== 'done').length,
     }),
-    { name: 'idesi-notes-v1' },
+    { name: 'idesi-notes-v1', storage: createJSONStorage(() => capacitorStorage) },
   ),
 )

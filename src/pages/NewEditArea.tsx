@@ -69,7 +69,7 @@ export default function NewEditArea() {
         <header className="w-full top-0 sticky bg-temple-ivory z-40 border-b border-pandya-gold/10">
           <div className="flex justify-between items-center px-6 py-4">
             <motion.button
-              onClick={() => navigate(-1)}
+              onClick={() => { sessionStorage.setItem('nav-direction', 'back'); navigate(-1) }}
               whileTap={{ scale: 0.90 }}
               className="text-granite hover:text-primary p-2 -ml-2 rounded-full"
             >
