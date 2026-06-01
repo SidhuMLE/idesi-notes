@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 import Home from './pages/Home'
 import Areas from './pages/Areas'
 import SectionDetail from './pages/SectionDetail'
@@ -8,10 +9,11 @@ import Search from './pages/Search'
 import Settings from './pages/Settings'
 import NewEditArea from './pages/NewEditArea'
 
-export default function App() {
+function AnimatedRoutes() {
+  const location = useLocation()
   return (
-    <BrowserRouter>
-      <Routes>
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/areas" element={<Areas />} />
         <Route path="/areas/new" element={<NewEditArea />} />
@@ -22,6 +24,14 @@ export default function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
+    </AnimatePresence>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AnimatedRoutes />
     </BrowserRouter>
   )
 }
