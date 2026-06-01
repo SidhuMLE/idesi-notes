@@ -8,17 +8,27 @@
     {
       "description": "Group all Capacitor packages together — they must all be on the same major version",
       "groupName": "Capacitor",
-      "matchPackagePrefixes": ["@capacitor/"]
+      "matchPackageNames": [
+        "@capacitor/{/,}**"
+      ]
     },
     {
       "description": "Group all testing libraries together",
       "groupName": "Testing",
-      "matchPackagePrefixes": ["@testing-library/", "vitest", "@vitest/", "@playwright/"]
+      "matchPackageNames": [
+        "@testing-library/{/,}**",
+        "vitest{/,}**",
+        "@vitest/{/,}**",
+        "@playwright/{/,}**"
+      ]
     },
     {
       "description": "Group all Tailwind packages together",
       "groupName": "Tailwind",
-      "matchPackagePrefixes": ["tailwindcss", "@tailwindcss/"]
+      "matchPackageNames": [
+        "tailwindcss{/,}**",
+        "@tailwindcss/{/,}**"
+      ]
     },
     {
       "description": "Automerge patch and minor updates that pass CI",
