@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Note - Idesi Notes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Fraunces:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed-variant": "#00504c",
+                        "secondary": "#7c5800",
+                        "outline": "#8a716e",
+                        "peacock": "#155F5B",
+                        "on-primary-fixed": "#410001",
+                        "on-secondary-fixed": "#271900",
+                        "inverse-primary": "#ffb4aa",
+                        "primary": "#6c1510",
+                        "inverse-on-surface": "#f8efe8",
+                        "on-primary-container": "#ffa89d",
+                        "primary-container": "#8b2c24",
+                        "surface-dim": "#e1d8d2",
+                        "surface-variant": "#eae1da",
+                        "on-primary-fixed-variant": "#82261e",
+                        "inverse-surface": "#34302b",
+                        "surface-tint": "#a23d33",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-container-high": "#f0e6e0",
+                        "on-background": "#1f1b17",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#055753",
+                        "on-tertiary-container": "#88cbc5",
+                        "on-error-container": "#93000a",
+                        "surface": "#fff8f4",
+                        "surface-bright": "#fff8f4",
+                        "surface-container": "#f6ece5",
+                        "tertiary-fixed-dim": "#90d3cd",
+                        "pearl": "#F4EDE1",
+                        "on-surface": "#1f1b17",
+                        "secondary-fixed": "#ffdea6",
+                        "brass": "#97701C",
+                        "tertiary": "#003e3b",
+                        "surface-container-highest": "#eae1da",
+                        "on-surface-variant": "#56423f",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fec658",
+                        "stone": "#6E655A",
+                        "on-tertiary-fixed": "#00201e",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "tertiary-fixed": "#acefe9",
+                        "error-container": "#ffdad6",
+                        "kumkum": "#B23A2C",
+                        "background": "#fff8f4",
+                        "primary-fixed": "#ffdad5",
+                        "madder-red": "#8B2C24",
+                        "on-secondary-container": "#735200",
+                        "pitch-green": "#3E5C2E",
+                        "temple-ivory": "#FAF5EC",
+                        "secondary-fixed-dim": "#f5be51",
+                        "pandya-gold": "#C8962C",
+                        "sandstone": "#EDE2CF",
+                        "granite": "#221E1A",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#fbf2eb",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#ddc0bc",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "xl": "32px",
+                        "huge": "64px",
+                        "margin": "32px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xxl": "48px"
+                    },
+                    fontFamily: {
+                        "data-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Fraunces"],
+                        "display": ["Fraunces"],
+                        "headline-lg": ["Fraunces"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Fraunces"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "data-mono": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.02em", fontWeight: "600" }],
+                        "headline-sm": ["24px", { lineHeight: "1.3", fontWeight: "500" }],
+                        "display": ["64px", { lineHeight: "1.1", fontWeight: "600" }],
+                        "headline-lg": ["40px", { lineHeight: "1.2", fontWeight: "500" }],
+                        "caption": ["13px", { lineHeight: "1.4", fontWeight: "400" }],
+                        "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "500" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .saved-indicator {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .saved-indicator.show {
+            opacity: 1;
+        }
+        /* Custom scrollbar for webkit to match the aesthetic */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #eae1da; /* surface-variant */
+            border-radius: 9999px;
+        }
+        textarea:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-temple-ivory h-full flex flex-col text-on-surface overflow-hidden">
+<!-- TopAppBar (Transactional/Task Focused - BottomNavBar Suppressed) -->
+<header class="bg-surface border-b border-outline-variant/20 w-full top-0 sticky flex justify-between items-center px-4 md:px-margin py-sm max-w-full z-10">
+<button aria-label="Go back and save" class="text-madder-red p-2 -ml-2 rounded-full hover:bg-surface-variant transition-colors active:scale-95 duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-headline-sm text-headline-sm text-primary font-display text-center">Mon 2 Jun 2026</h1>
+<span class="font-caption text-caption text-stone saved-indicator" id="saveStatus">Saved</span>
+</div>
+<button aria-label="More options" class="text-madder-red p-2 -mr-2 rounded-full hover:bg-surface-variant transition-colors active:scale-95 duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col relative w-full h-full">
+<!-- Generous whitespace and full width text area -->
+<textarea autofocus="" class="w-full h-full flex-grow bg-transparent border-none resize-none px-4 md:px-8 py-6 font-body-md text-body-md text-granite placeholder:text-stone/60 focus:ring-0 leading-relaxed" id="noteInput" placeholder="Write something…"></textarea>
+<!-- Subtle Pandya Gold divider at the very bottom just to anchor the space visually, mimicking a premium notebook spine or edge -->
+<div class="h-[1px] w-full bg-pandya-gold/10 absolute bottom-0 left-0"></div>
+</main>
+<script>
+        // Auto-save simulation logic
+        const noteInput = document.getElementById('noteInput');
+        const saveStatus = document.getElementById('saveStatus');
+        let saveTimeout;
+
+        noteInput.addEventListener('input', () => {
+            // Hide "Saved" indicator while typing
+            saveStatus.classList.remove('show');
+            
+            // Clear existing timeout
+            clearTimeout(saveTimeout);
+            
+            // Set a new timeout to simulate saving after user stops typing
+            saveTimeout = setTimeout(() => {
+                // Simulate save complete
+                saveStatus.classList.add('show');
+                
+                // Optionally hide it again after a few seconds
+                setTimeout(() => {
+                    saveStatus.classList.remove('show');
+                }, 3000);
+            }, 1000); // 1 second after last keystroke
+        });
+
+        // Ensure text area focuses immediately (works better on real devices if triggered by user interaction usually, but good for demo)
+        window.addEventListener('DOMContentLoaded', () => {
+            noteInput.focus();
+        });
+    </script>
+</body></html>

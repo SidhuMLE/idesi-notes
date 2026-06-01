@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Idesi Notes - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#00504c",
+                        "secondary": "#7c5800",
+                        "outline": "#8a716e",
+                        "peacock": "#155F5B",
+                        "on-primary-fixed": "#410001",
+                        "on-secondary-fixed": "#271900",
+                        "inverse-primary": "#ffb4aa",
+                        "primary": "#6c1510",
+                        "inverse-on-surface": "#f8efe8",
+                        "on-primary-container": "#ffa89d",
+                        "primary-container": "#8b2c24",
+                        "surface-dim": "#e1d8d2",
+                        "surface-variant": "#eae1da",
+                        "on-primary-fixed-variant": "#82261e",
+                        "inverse-surface": "#34302b",
+                        "surface-tint": "#a23d33",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-container-high": "#f0e6e0",
+                        "on-background": "#1f1b17",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#055753",
+                        "on-tertiary-container": "#88cbc5",
+                        "on-error-container": "#93000a",
+                        "surface": "#fff8f4",
+                        "surface-bright": "#fff8f4",
+                        "surface-container": "#f6ece5",
+                        "tertiary-fixed-dim": "#90d3cd",
+                        "pearl": "#F4EDE1",
+                        "on-surface": "#1f1b17",
+                        "secondary-fixed": "#ffdea6",
+                        "brass": "#97701C",
+                        "tertiary": "#003e3b",
+                        "surface-container-highest": "#eae1da",
+                        "on-surface-variant": "#56423f",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fec658",
+                        "stone": "#6E655A",
+                        "on-tertiary-fixed": "#00201e",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "tertiary-fixed": "#acefe9",
+                        "error-container": "#ffdad6",
+                        "kumkum": "#B23A2C",
+                        "background": "#fff8f4",
+                        "primary-fixed": "#ffdad5",
+                        "madder-red": "#8B2C24",
+                        "on-secondary-container": "#735200",
+                        "pitch-green": "#3E5C2E",
+                        "temple-ivory": "#FAF5EC",
+                        "secondary-fixed-dim": "#f5be51",
+                        "pandya-gold": "#C8962C",
+                        "sandstone": "#EDE2CF",
+                        "granite": "#221E1A",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#fbf2eb",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#ddc0bc",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "huge": "64px",
+                        "margin": "32px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Fraunces"],
+                        "display": ["Fraunces"],
+                        "headline-lg": ["Fraunces"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Fraunces"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display": ["64px", { "lineHeight": "1.1", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "caption": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Subtle fade edge for horizontal scroll containers */
+        .scroll-mask {
+            mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-temple-ivory text-granite font-body-md antialiased min-h-screen pb-24 selection:bg-pandya-gold/20">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim z-40 border-b border-outline-variant/20 dark:border-outline/20">
+<div class="flex justify-between items-center px-4 py-sm max-w-full">
+<button aria-label="Menu" class="p-2 hover:bg-surface-variant rounded-full active:scale-95 duration-150 transition-colors">
+<span class="material-symbols-outlined text-madder-red dark:text-primary-fixed" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed">Idesi Notes</h1>
+<button aria-label="More options" class="p-2 hover:bg-surface-variant rounded-full active:scale-95 duration-150 transition-colors">
+<span class="material-symbols-outlined text-madder-red dark:text-primary-fixed" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="px-md md:px-margin max-w-5xl mx-auto space-y-xl pt-lg">
+<!-- Header Section -->
+<section class="space-y-sm">
+<p class="font-data-mono text-data-mono text-stone tracking-wide">TUE, 24 OCT</p>
+<h2 class="font-headline-md text-headline-md text-granite max-w-[80%]">Good morning, Sidharth</h2>
+</section>
+<!-- Due Today (Horizontal Scroll) -->
+<section class="space-y-md relative -mx-md md:mx-0 px-md md:px-0">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-granite">Due Today</h3>
+<span class="bg-sandstone text-granite font-label-md text-label-md px-3 py-1 rounded-full">3 Tasks</span>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-md pb-4 snap-x snap-mandatory scroll-mask -mx-md px-md">
+<!-- Task Card 1 -->
+<article class="min-w-[280px] snap-center bg-sandstone rounded-xl p-lg shadow-[0_8px_32px_rgba(34,30,26,0.08)] flex flex-col justify-between shrink-0 border border-pandya-gold/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-pandya-gold/5 to-transparent rounded-bl-full pointer-events-none"></div>
+<div class="space-y-4 relative z-10">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-madder-red"></span>
+<span class="font-label-md text-label-md text-stone uppercase tracking-widest">Personal</span>
+</div>
+<h4 class="font-body-lg text-body-lg text-granite leading-tight">Renew passport application online</h4>
+</div>
+<div class="mt-8 flex items-center justify-between relative z-10">
+<span class="font-data-mono text-data-mono text-madder-red flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                            14:00
+                        </span>
+<button class="w-10 h-10 rounded-full border border-pandya-gold text-granite flex items-center justify-center hover:bg-pandya-gold/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</article>
+<!-- Task Card 2 -->
+<article class="min-w-[280px] snap-center bg-sandstone rounded-xl p-lg shadow-[0_8px_32px_rgba(34,30,26,0.08)] flex flex-col justify-between shrink-0 border border-pandya-gold/10 relative overflow-hidden group">
+<div class="space-y-4 relative z-10">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-peacock"></span>
+<span class="font-label-md text-label-md text-stone uppercase tracking-widest">Work</span>
+</div>
+<h4 class="font-body-lg text-body-lg text-granite leading-tight">Review Q3 design system updates</h4>
+</div>
+<div class="mt-8 flex items-center justify-between relative z-10">
+<span class="font-data-mono text-data-mono text-stone flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                            16:30
+                        </span>
+<button class="w-10 h-10 rounded-full border border-pandya-gold text-granite flex items-center justify-center hover:bg-pandya-gold/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</article>
+<!-- Task Card 3 -->
+<article class="min-w-[280px] snap-center bg-sandstone rounded-xl p-lg shadow-[0_8px_32px_rgba(34,30,26,0.08)] flex flex-col justify-between shrink-0 border border-pandya-gold/10 relative overflow-hidden group">
+<div class="space-y-4 relative z-10">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-pandya-gold"></span>
+<span class="font-label-md text-label-md text-stone uppercase tracking-widest">Home</span>
+</div>
+<h4 class="font-body-lg text-body-lg text-granite leading-tight">Call plumber for kitchen sink</h4>
+</div>
+<div class="mt-8 flex items-center justify-between relative z-10">
+<span class="font-data-mono text-data-mono text-stone flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                            18:00
+                        </span>
+<button class="w-10 h-10 rounded-full border border-pandya-gold text-granite flex items-center justify-center hover:bg-pandya-gold/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- Divider -->
+<hr class="border-t border-dashed border-pandya-gold/30 mx-auto w-3/4"/>
+<!-- Upcoming (List View) -->
+<section class="space-y-md">
+<h3 class="font-headline-sm text-headline-sm text-granite">Upcoming</h3>
+<div class="space-y-3">
+<!-- List Item 1 -->
+<div class="flex items-center gap-4 p-4 rounded-lg hover:bg-sandstone/50 transition-colors border-b border-pandya-gold/10 last:border-0 group cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-peacock mt-1 self-start"></div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-stone uppercase tracking-wide mb-1">Work</p>
+<p class="font-body-md text-body-md text-granite group-hover:text-madder-red transition-colors">Finalize vendor contracts</p>
+</div>
+<div class="bg-surface-variant text-granite font-caption text-caption px-3 py-1 rounded-full whitespace-nowrap">
+                        Tomorrow
+                    </div>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center gap-4 p-4 rounded-lg hover:bg-sandstone/50 transition-colors border-b border-pandya-gold/10 last:border-0 group cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-madder-red mt-1 self-start"></div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-stone uppercase tracking-wide mb-1">Health</p>
+<p class="font-body-md text-body-md text-granite group-hover:text-madder-red transition-colors">Annual checkup appointment</p>
+</div>
+<div class="bg-surface-variant text-granite font-caption text-caption px-3 py-1 rounded-full whitespace-nowrap">
+                        Thu, 26 Oct
+                    </div>
+</div>
+<!-- List Item 3 -->
+<div class="flex items-center gap-4 p-4 rounded-lg hover:bg-sandstone/50 transition-colors border-b border-pandya-gold/10 last:border-0 group cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-pandya-gold mt-1 self-start"></div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-stone uppercase tracking-wide mb-1">Finance</p>
+<p class="font-body-md text-body-md text-granite group-hover:text-madder-red transition-colors">Pay quarterly taxes</p>
+</div>
+<div class="bg-surface-variant text-granite font-caption text-caption px-3 py-1 rounded-full whitespace-nowrap">
+                        Sun, 29 Oct
+                    </div>
+</div>
+</div>
+<button class="w-full py-3 text-center font-label-md text-label-md text-madder-red hover:bg-madder-red/5 rounded-lg transition-colors border border-transparent hover:border-madder-red/20">
+                View all upcoming
+            </button>
+</section>
+<!-- Divider -->
+<hr class="border-t border-dashed border-pandya-gold/30 mx-auto w-3/4"/>
+<!-- My Areas -->
+<section class="space-y-md relative -mx-md md:mx-0 px-md md:px-0">
+<h3 class="font-headline-sm text-headline-sm text-granite">My Areas</h3>
+<div class="flex overflow-x-auto hide-scrollbar gap-4 pb-4 scroll-mask -mx-md px-md">
+<!-- Area 1 -->
+<a class="min-w-[140px] aspect-square bg-surface rounded-xl p-4 border border-pandya-gold/20 flex flex-col items-center justify-center gap-3 hover:bg-sandstone transition-colors shadow-[0_4px_16px_rgba(34,30,26,0.04)] shrink-0" href="#">
+<div class="w-12 h-12 rounded-full bg-sandstone flex items-center justify-center text-madder-red">
+<span class="material-symbols-outlined text-[24px]" data-icon="person">person</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-label-md text-granite">Personal</p>
+<p class="font-caption text-caption text-stone">12 active</p>
+</div>
+</a>
+<!-- Area 2 -->
+<a class="min-w-[140px] aspect-square bg-surface rounded-xl p-4 border border-pandya-gold/20 flex flex-col items-center justify-center gap-3 hover:bg-sandstone transition-colors shadow-[0_4px_16px_rgba(34,30,26,0.04)] shrink-0" href="#">
+<div class="w-12 h-12 rounded-full bg-sandstone flex items-center justify-center text-peacock">
+<span class="material-symbols-outlined text-[24px]" data-icon="work">work</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-label-md text-granite">Work</p>
+<p class="font-caption text-caption text-stone">8 active</p>
+</div>
+</a>
+<!-- Area 3 -->
+<a class="min-w-[140px] aspect-square bg-surface rounded-xl p-4 border border-pandya-gold/20 flex flex-col items-center justify-center gap-3 hover:bg-sandstone transition-colors shadow-[0_4px_16px_rgba(34,30,26,0.04)] shrink-0" href="#">
+<div class="w-12 h-12 rounded-full bg-sandstone flex items-center justify-center text-pandya-gold">
+<span class="material-symbols-outlined text-[24px]" data-icon="home">home</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-label-md text-granite">Home</p>
+<p class="font-caption text-caption text-stone">3 active</p>
+</div>
+</a>
+<!-- Area 4 -->
+<a class="min-w-[140px] aspect-square bg-surface rounded-xl p-4 border border-pandya-gold/20 flex flex-col items-center justify-center gap-3 hover:bg-sandstone transition-colors shadow-[0_4px_16px_rgba(34,30,26,0.04)] shrink-0" href="#">
+<div class="w-12 h-12 rounded-full border border-dashed border-stone flex items-center justify-center text-stone">
+<span class="material-symbols-outlined text-[24px]" data-icon="add">add</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-label-md text-granite">New Area</p>
+</div>
+</a>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button aria-label="Add new task" class="fixed bottom-24 right-4 md:right-8 w-14 h-14 bg-madder-red text-temple-ivory rounded-2xl shadow-[0_8px_24px_rgba(139,44,36,0.3)] flex items-center justify-center hover:-translate-y-1 transition-transform active:scale-95 z-40">
+<span class="material-symbols-outlined text-[28px]" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-temple-ivory dark:bg-inverse-surface border-t border-pandya-gold/10 shadow-[0_-4px_20px_rgba(34,30,26,0.05)] rounded-t-xl">
+<button aria-label="Home" class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md-mobile mt-1">Home</span>
+</button>
+<button aria-label="Areas" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-label-md text-label-md-mobile mt-1">Areas</span>
+</button>
+<button aria-label="Search" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-md text-label-md-mobile mt-1">Search</span>
+</button>
+<button aria-label="Settings" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md-mobile mt-1">Settings</span>
+</button>
+</nav>
+</body></html>

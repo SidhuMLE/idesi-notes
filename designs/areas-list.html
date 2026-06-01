@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Areas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#00504c",
+                      "secondary": "#7c5800",
+                      "outline": "#8a716e",
+                      "peacock": "#155F5B",
+                      "on-primary-fixed": "#410001",
+                      "on-secondary-fixed": "#271900",
+                      "inverse-primary": "#ffb4aa",
+                      "primary": "#6c1510",
+                      "inverse-on-surface": "#f8efe8",
+                      "on-primary-container": "#ffa89d",
+                      "primary-container": "#8b2c24",
+                      "surface-dim": "#e1d8d2",
+                      "surface-variant": "#eae1da",
+                      "on-primary-fixed-variant": "#82261e",
+                      "inverse-surface": "#34302b",
+                      "surface-tint": "#a23d33",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "surface-container-high": "#f0e6e0",
+                      "on-background": "#1f1b17",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#055753",
+                      "on-tertiary-container": "#88cbc5",
+                      "on-error-container": "#93000a",
+                      "surface": "#fff8f4",
+                      "surface-bright": "#fff8f4",
+                      "surface-container": "#f6ece5",
+                      "tertiary-fixed-dim": "#90d3cd",
+                      "pearl": "#F4EDE1",
+                      "on-surface": "#1f1b17",
+                      "secondary-fixed": "#ffdea6",
+                      "brass": "#97701C",
+                      "tertiary": "#003e3b",
+                      "surface-container-highest": "#eae1da",
+                      "on-surface-variant": "#56423f",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#fec658",
+                      "stone": "#6E655A",
+                      "on-tertiary-fixed": "#00201e",
+                      "primary-fixed-dim": "#ffb4aa",
+                      "tertiary-fixed": "#acefe9",
+                      "error-container": "#ffdad6",
+                      "kumkum": "#B23A2C",
+                      "background": "#fff8f4",
+                      "primary-fixed": "#ffdad5",
+                      "madder-red": "#8B2C24",
+                      "on-secondary-container": "#735200",
+                      "pitch-green": "#3E5C2E",
+                      "temple-ivory": "#FAF5EC",
+                      "secondary-fixed-dim": "#f5be51",
+                      "pandya-gold": "#C8962C",
+                      "sandstone": "#EDE2CF",
+                      "granite": "#221E1A",
+                      "on-secondary": "#ffffff",
+                      "surface-container-low": "#fbf2eb",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#ddc0bc",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "huge": "64px",
+                      "margin": "32px",
+                      "sm": "8px",
+                      "base": "8px",
+                      "lg": "24px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xxl": "48px"
+              },
+              "fontFamily": {
+                      "data-mono": ["JetBrains Mono"],
+                      "body-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-sm": ["Fraunces"],
+                      "display": ["Fraunces"],
+                      "headline-lg": ["Fraunces"],
+                      "caption": ["Inter"],
+                      "headline-md": ["Fraunces"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "data-mono": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                      "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                      "display": ["64px", { "lineHeight": "1.1", "fontWeight": "600" }],
+                      "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                      "caption": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                      "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-temple-ivory text-granite font-body-md min-h-screen flex flex-col antialiased relative pb-[100px]">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-temple-ivory z-40 border-b border-pandya-gold/10 transition-shadow">
+<div class="flex justify-between items-center px-md py-sm h-16 max-w-full mx-auto md:px-margin">
+<button class="text-granite p-2 rounded-full hover:bg-sandstone/50 active:scale-95 duration-150 transition-colors focus:outline-none">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-granite tracking-tight">My Areas</h1>
+<button class="text-granite p-2 rounded-full hover:bg-sandstone/50 active:scale-95 duration-150 transition-colors focus:outline-none">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-md py-6 flex flex-col gap-4 max-w-lg mx-auto w-full md:px-margin md:py-8">
+<!-- List Items Container -->
+<div class="flex flex-col gap-3">
+<!-- Area Row: Personal -->
+<div class="group flex items-center bg-surface-container-low rounded-xl p-4 shadow-[0_4px_20px_rgba(34,30,26,0.03)] border border-pandya-gold/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-sandstone flex items-center justify-center text-madder-red shrink-0 border border-pandya-gold/20">
+<span class="material-symbols-outlined" data-icon="person" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div class="ml-4 flex-1">
+<h3 class="font-label-md text-label-md text-granite">Personal Life</h3>
+<p class="font-caption text-caption text-stone mt-1">4 open tasks · 12 notes</p>
+</div>
+<div class="text-pandya-gold/60 group-hover:text-pandya-gold transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Area Row: Work -->
+<div class="group flex items-center bg-surface-container-low rounded-xl p-4 shadow-[0_4px_20px_rgba(34,30,26,0.03)] border border-pandya-gold/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-sandstone flex items-center justify-center text-madder-red shrink-0 border border-pandya-gold/20">
+<span class="material-symbols-outlined" data-icon="work" data-weight="fill" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<div class="ml-4 flex-1">
+<h3 class="font-label-md text-label-md text-granite">Work &amp; Projects</h3>
+<p class="font-caption text-caption text-stone mt-1">8 open tasks · 34 notes</p>
+</div>
+<div class="text-pandya-gold/60 group-hover:text-pandya-gold transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Area Row: Health -->
+<div class="group flex items-center bg-surface-container-low rounded-xl p-4 shadow-[0_4px_20px_rgba(34,30,26,0.03)] border border-pandya-gold/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-sandstone flex items-center justify-center text-madder-red shrink-0 border border-pandya-gold/20">
+<span class="material-symbols-outlined" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="ml-4 flex-1">
+<h3 class="font-label-md text-label-md text-granite">Health &amp; Wellness</h3>
+<p class="font-caption text-caption text-stone mt-1">1 open tasks · 5 notes</p>
+</div>
+<div class="text-pandya-gold/60 group-hover:text-pandya-gold transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Area Row: Finances -->
+<div class="group flex items-center bg-surface-container-low rounded-xl p-4 shadow-[0_4px_20px_rgba(34,30,26,0.03)] border border-pandya-gold/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-sandstone flex items-center justify-center text-madder-red shrink-0 border border-pandya-gold/20">
+<span class="material-symbols-outlined" data-icon="account_balance" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div class="ml-4 flex-1">
+<h3 class="font-label-md text-label-md text-granite">Finances</h3>
+<p class="font-caption text-caption text-stone mt-1">0 open tasks · 8 notes</p>
+</div>
+<div class="text-pandya-gold/60 group-hover:text-pandya-gold transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- New Area Button -->
+<div class="mt-6">
+<button class="w-full flex items-center justify-center gap-2 border border-pandya-gold text-granite rounded-lg py-3.5 px-4 font-label-md text-label-md hover:bg-pandya-gold/5 active:bg-pandya-gold/10 transition-colors focus:outline-none focus:ring-2 focus:ring-pandya-gold focus:ring-offset-2 focus:ring-offset-temple-ivory">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+<span>New Area</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-temple-ivory border-t border-pandya-gold/10 shadow-[0_-4px_20px_rgba(34,30,26,0.05)] md:hidden">
+<div class="flex justify-around items-center px-4 pb-4 pt-2">
+<!-- Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-md text-[11px] leading-tight font-medium">Home</span>
+</button>
+<!-- Areas (Active) -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1.5 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-0.5" data-icon="category" data-weight="fill" style="font-variation-settings: 'FILL' 1;">category</span>
+<span class="font-label-md text-[11px] leading-tight font-bold">Areas</span>
+</button>
+<!-- Search (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="search">search</span>
+<span class="font-label-md text-[11px] leading-tight font-medium">Search</span>
+</button>
+<!-- Settings (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-md text-[11px] leading-tight font-medium">Settings</span>
+</button>
+</div>
+</nav>
+</body></html>

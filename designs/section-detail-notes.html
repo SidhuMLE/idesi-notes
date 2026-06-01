@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Idesi Notes - Area Notes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#00504c",
+                        "secondary": "#7c5800",
+                        "outline": "#8a716e",
+                        "peacock": "#155F5B",
+                        "on-primary-fixed": "#410001",
+                        "on-secondary-fixed": "#271900",
+                        "inverse-primary": "#ffb4aa",
+                        "primary": "#6c1510",
+                        "inverse-on-surface": "#f8efe8",
+                        "on-primary-container": "#ffa89d",
+                        "primary-container": "#8b2c24",
+                        "surface-dim": "#e1d8d2",
+                        "surface-variant": "#eae1da",
+                        "on-primary-fixed-variant": "#82261e",
+                        "inverse-surface": "#34302b",
+                        "surface-tint": "#a23d33",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-container-high": "#f0e6e0",
+                        "on-background": "#1f1b17",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#055753",
+                        "on-tertiary-container": "#88cbc5",
+                        "on-error-container": "#93000a",
+                        "surface": "#fff8f4",
+                        "surface-bright": "#fff8f4",
+                        "surface-container": "#f6ece5",
+                        "tertiary-fixed-dim": "#90d3cd",
+                        "pearl": "#F4EDE1",
+                        "on-surface": "#1f1b17",
+                        "secondary-fixed": "#ffdea6",
+                        "brass": "#97701C",
+                        "tertiary": "#003e3b",
+                        "surface-container-highest": "#eae1da",
+                        "on-surface-variant": "#56423f",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fec658",
+                        "stone": "#6E655A",
+                        "on-tertiary-fixed": "#00201e",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "tertiary-fixed": "#acefe9",
+                        "error-container": "#ffdad6",
+                        "kumkum": "#B23A2C",
+                        "background": "#fff8f4",
+                        "primary-fixed": "#ffdad5",
+                        "madder-red": "#8B2C24",
+                        "on-secondary-container": "#735200",
+                        "pitch-green": "#3E5C2E",
+                        "temple-ivory": "#FAF5EC",
+                        "secondary-fixed-dim": "#f5be51",
+                        "pandya-gold": "#C8962C",
+                        "sandstone": "#EDE2CF",
+                        "granite": "#221E1A",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#fbf2eb",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#ddc0bc",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "huge": "64px",
+                        "margin": "32px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Fraunces"],
+                        "display": ["Fraunces"],
+                        "headline-lg": ["Fraunces"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Fraunces"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display": ["64px", { "lineHeight": "1.1", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "caption": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #FAF5EC; /* Temple Ivory */
+            color: #1f1b17; /* on-surface */
+        }
+        /* Custom scrollbar to match aesthetic */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ddc0bc;
+            border-radius: 9999px;
+        }
+        /* Hide scrollbar for tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col md:hidden">
+<!-- TopAppBar (Customized for Area context) -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim border-b border-outline-variant/20 dark:border-outline/20 flat no shadows z-40">
+<div class="flex justify-between items-center px-4 py-sm max-w-full">
+<button aria-label="Go back" class="text-madder-red dark:text-primary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors active:scale-95 duration-150 p-2">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+</button>
+<div class="flex items-center gap-2 text-primary dark:text-primary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">work</span>
+<h1 class="font-headline-sm text-headline-sm font-display tracking-tight">Work Projects</h1>
+</div>
+<button aria-label="Search area" class="text-madder-red dark:text-primary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors active:scale-95 duration-150 p-2">
+<span class="material-symbols-outlined" style="font-size: 24px;">search</span>
+</button>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-pandya-gold/10 px-4">
+<button class="flex-1 py-3 text-center font-label-md text-label-md text-on-surface-variant transition-colors relative">
+                Tasks
+            </button>
+<button class="flex-1 py-3 text-center font-label-md text-label-md text-madder-red font-semibold transition-colors relative">
+                Notes
+                <div class="absolute bottom-0 left-0 w-full h-0.5 bg-madder-red rounded-t-full"></div>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto px-4 py-6 pb-24 flex flex-col gap-4">
+<!-- Note Entry 1 -->
+<article class="bg-sandstone rounded-xl p-4 shadow-[0_4px_20px_rgba(34,30,26,0.08)] flex flex-col gap-2 relative group overflow-hidden">
+<!-- Decorative subtle accent -->
+<div class="absolute top-0 left-0 w-1 h-full bg-pandya-gold/40"></div>
+<div class="flex justify-between items-center">
+<time class="font-data-mono text-data-mono text-stone text-[12px]">Mon 2 Jun, 14:30</time>
+<span class="material-symbols-outlined text-madder-red/60" style="font-size: 16px;">push_pin</span>
+</div>
+<h3 class="font-label-md text-label-md text-granite font-bold">Client Briefing: Q3 Redesign</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-snug text-sm">
+                Discussed the primary objectives for the upcoming quarter. Main focus will be on improving mobile conversion rates and streamlining the checkout flow. Need to review analytics by Friday.
+            </p>
+<div class="flex gap-2 mt-2">
+<span class="bg-temple-ivory px-2 py-0.5 rounded-full font-caption text-caption text-stone border border-pandya-gold/20">Design</span>
+<span class="bg-temple-ivory px-2 py-0.5 rounded-full font-caption text-caption text-stone border border-pandya-gold/20">Q3</span>
+</div>
+</article>
+<!-- Note Entry 2 -->
+<article class="bg-sandstone rounded-xl p-4 shadow-[0_4px_20px_rgba(34,30,26,0.08)] flex flex-col gap-2 relative group overflow-hidden">
+<!-- Decorative subtle accent -->
+<div class="absolute top-0 left-0 w-1 h-full bg-pandya-gold/40"></div>
+<div class="flex justify-between items-center">
+<time class="font-data-mono text-data-mono text-stone text-[12px]">Fri 30 May, 09:15</time>
+</div>
+<h3 class="font-label-md text-label-md text-granite font-bold">Ideas for new API structure</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-snug text-sm">
+                Consider moving away from REST to GraphQL for the frontend consumption. It might solve the over-fetching issues we saw in the dashboard metrics last month.
+            </p>
+<div class="flex gap-2 mt-2">
+<span class="bg-peacock/10 px-2 py-0.5 rounded-full font-caption text-caption text-peacock border border-peacock/20">Technical</span>
+</div>
+</article>
+<!-- Note Entry 3 -->
+<article class="bg-sandstone rounded-xl p-4 shadow-[0_4px_20px_rgba(34,30,26,0.08)] flex flex-col gap-2 relative group overflow-hidden">
+<!-- Decorative subtle accent -->
+<div class="absolute top-0 left-0 w-1 h-full bg-pandya-gold/40"></div>
+<div class="flex justify-between items-center">
+<time class="font-data-mono text-data-mono text-stone text-[12px]">Wed 28 May, 16:45</time>
+</div>
+<h3 class="font-label-md text-label-md text-granite font-bold">Vendor call notes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-snug text-sm">
+                Spoke with Sarah regarding the SLA terms. They are willing to negotiate the response times but the base tier pricing remains fixed for this year.
+            </p>
+</article>
+<!-- Empty State (Hidden via inline style for this view, but present in DOM) -->
+<div class="hidden flex-col items-center justify-center h-48 text-center mt-8">
+<div class="w-16 h-16 rounded-full bg-pearl flex items-center justify-center mb-4 shadow-sm border border-pandya-gold/20">
+<span class="material-symbols-outlined text-madder-red/50" style="font-size: 32px;">edit_document</span>
+</div>
+<p class="font-body-md text-body-md text-stone italic">No notes yet — tap + to write your first entry.</p>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button aria-label="Add note" class="fixed bottom-[88px] right-6 w-14 h-14 bg-madder-red text-temple-ivory rounded-full shadow-[0_4px_20px_rgba(139,44,36,0.3)] flex items-center justify-center hover:bg-primary transition-colors active:scale-95 z-40">
+<span class="material-symbols-outlined" style="font-size: 28px;">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-temple-ivory dark:bg-inverse-surface border-t border-pandya-gold/10 shadow-[0_-4px_20px_rgba(34,30,26,0.05)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-md text-label-md font-body-md text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">category</span>
+<span class="font-label-md text-label-md font-body-md text-[10px]">Areas</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1">search</span>
+<span class="font-label-md text-label-md font-body-md text-[10px]">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span class="font-label-md text-label-md font-body-md text-[10px]">Settings</span>
+</button>
+</nav>
+<script>
+        // Simple script for ripple effect on buttons if desired later
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', function(e) {
+                // Micro-interaction logic can go here
+            });
+        });
+    </script>
+</body></html>

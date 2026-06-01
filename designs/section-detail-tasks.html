@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cotra App - Tasks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#00504c",
+                        "secondary": "#7c5800",
+                        "outline": "#8a716e",
+                        "peacock": "#155F5B",
+                        "on-primary-fixed": "#410001",
+                        "on-secondary-fixed": "#271900",
+                        "inverse-primary": "#ffb4aa",
+                        "primary": "#6c1510",
+                        "inverse-on-surface": "#f8efe8",
+                        "on-primary-container": "#ffa89d",
+                        "primary-container": "#8b2c24",
+                        "surface-dim": "#e1d8d2",
+                        "surface-variant": "#eae1da",
+                        "on-primary-fixed-variant": "#82261e",
+                        "inverse-surface": "#34302b",
+                        "surface-tint": "#a23d33",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-container-high": "#f0e6e0",
+                        "on-background": "#1f1b17",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#055753",
+                        "on-tertiary-container": "#88cbc5",
+                        "on-error-container": "#93000a",
+                        "surface": "#fff8f4",
+                        "surface-bright": "#fff8f4",
+                        "surface-container": "#f6ece5",
+                        "tertiary-fixed-dim": "#90d3cd",
+                        "pearl": "#F4EDE1",
+                        "on-surface": "#1f1b17",
+                        "secondary-fixed": "#ffdea6",
+                        "brass": "#97701C",
+                        "tertiary": "#003e3b",
+                        "surface-container-highest": "#eae1da",
+                        "on-surface-variant": "#56423f",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fec658",
+                        "stone": "#6E655A",
+                        "on-tertiary-fixed": "#00201e",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "tertiary-fixed": "#acefe9",
+                        "error-container": "#ffdad6",
+                        "kumkum": "#B23A2C",
+                        "background": "#fff8f4",
+                        "primary-fixed": "#ffdad5",
+                        "madder-red": "#8B2C24",
+                        "on-secondary-container": "#735200",
+                        "pitch-green": "#3E5C2E",
+                        "temple-ivory": "#FAF5EC",
+                        "secondary-fixed-dim": "#f5be51",
+                        "pandya-gold": "#C8962C",
+                        "sandstone": "#EDE2CF",
+                        "granite": "#221E1A",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#fbf2eb",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#ddc0bc",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "huge": "64px",
+                        "margin": "32px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Fraunces"],
+                        "display": ["Fraunces"],
+                        "headline-lg": ["Fraunces"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Fraunces"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display": ["64px", { "lineHeight": "1.1", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "caption": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar to match theme */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #ddc0bc; border-radius: 4px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-temple-ivory text-granite font-body-md h-screen w-full overflow-hidden flex flex-col md:hidden pb-20">
+<!-- TopAppBar Semantic Shell Match -->
+<header class="w-full top-0 sticky flex justify-between items-center px-4 py-sm max-w-full bg-temple-ivory dark:bg-surface-dim z-40 border-b border-pandya-gold/10">
+<button class="text-madder-red active:scale-95 duration-150 p-2">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-pitch-green">code</span>
+<h1 class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed">Cotra App</h1>
+</div>
+<button class="text-madder-red active:scale-95 duration-150 p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<!-- Tabs -->
+<div class="w-full border-b border-pandya-gold/20 flex px-4 pt-2">
+<button class="flex-1 pb-3 text-center border-b-2 border-primary text-primary font-label-md text-label-md">Tasks</button>
+<button class="flex-1 pb-3 text-center border-b-2 border-transparent text-stone hover:text-granite font-label-md text-label-md">Notes</button>
+</div>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto px-4 py-6 space-y-6">
+<!-- Filter Chips -->
+<div class="flex overflow-x-auto gap-2 pb-2 hide-scrollbar">
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-sandstone text-granite font-label-md text-label-md shadow-[0_2px_8px_rgba(34,30,26,0.05)] border border-pandya-gold/20">All</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-temple-ivory text-stone border border-stone/30 font-label-md text-label-md hover:bg-sandstone/50">Open</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-temple-ivory text-stone border border-stone/30 font-label-md text-label-md hover:bg-sandstone/50">In Progress</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-temple-ivory text-stone border border-stone/30 font-label-md text-label-md hover:bg-sandstone/50">Done</button>
+</div>
+<!-- Task List -->
+<div class="space-y-3">
+<!-- Task Item 1: Overdue -->
+<div class="bg-sandstone rounded-xl p-4 shadow-[0_4px_12px_rgba(34,30,26,0.06)] flex items-start gap-3 border border-transparent">
+<button class="mt-1 w-5 h-5 rounded-full border-2 border-stone flex-shrink-0 flex items-center justify-center hover:border-primary transition-colors"></button>
+<div class="flex-1">
+<h3 class="font-body-md text-body-md text-granite">Finalize API documentation</h3>
+<div class="flex items-center gap-2 mt-2 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-stone font-caption text-caption text-xs">High</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-kumkum font-caption text-caption text-xs flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">warning</span>Yesterday</span>
+</div>
+</div>
+</div>
+<!-- Task Item 2: Open -->
+<div class="bg-sandstone rounded-xl p-4 shadow-[0_4px_12px_rgba(34,30,26,0.06)] flex items-start gap-3 border border-transparent">
+<button class="mt-1 w-5 h-5 rounded-full border-2 border-stone flex-shrink-0 flex items-center justify-center hover:border-primary transition-colors"></button>
+<div class="flex-1">
+<h3 class="font-body-md text-body-md text-granite">Implement JWT authentication</h3>
+<div class="flex items-center gap-2 mt-2 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-stone font-caption text-caption text-xs">Medium</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-stone font-caption text-caption text-xs">Today</span>
+</div>
+</div>
+</div>
+<!-- Task Item 3: Open -->
+<div class="bg-sandstone rounded-xl p-4 shadow-[0_4px_12px_rgba(34,30,26,0.06)] flex items-start gap-3 border border-transparent">
+<button class="mt-1 w-5 h-5 rounded-full border-2 border-stone flex-shrink-0 flex items-center justify-center hover:border-primary transition-colors"></button>
+<div class="flex-1">
+<h3 class="font-body-md text-body-md text-granite">Review PR #42 from staging</h3>
+<div class="flex items-center gap-2 mt-2 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-stone font-caption text-caption text-xs">Low</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-stone font-caption text-caption text-xs">Tomorrow</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Done Group -->
+<div class="mt-8">
+<button class="flex items-center gap-2 w-full text-left py-2 mb-2 text-stone hover:text-granite transition-colors group">
+<span class="material-symbols-outlined transition-transform duration-200 text-stone group-hover:text-granite">expand_more</span>
+<span class="font-label-md text-label-md">Done (3)</span>
+<div class="flex-1 h-px bg-pandya-gold/10 ml-2"></div>
+</button>
+<div class="space-y-3 opacity-60">
+<!-- Task Item Done -->
+<div class="bg-surface-container-low rounded-xl p-4 border border-pandya-gold/5 flex items-start gap-3">
+<button class="mt-1 w-5 h-5 rounded-full bg-primary border-primary flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</button>
+<div class="flex-1">
+<h3 class="font-body-md text-body-md text-stone line-through">Setup initial repository</h3>
+</div>
+</div>
+<!-- Task Item Done -->
+<div class="bg-surface-container-low rounded-xl p-4 border border-pandya-gold/5 flex items-start gap-3">
+<button class="mt-1 w-5 h-5 rounded-full bg-primary border-primary flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</button>
+<div class="flex-1">
+<h3 class="font-body-md text-body-md text-stone line-through">Define database schema</h3>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for FAB/Nav -->
+<div class="h-24"></div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-[88px] right-6 w-14 h-14 bg-primary text-white rounded-xl shadow-[0_8px_24px_rgba(108,21,16,0.3)] flex items-center justify-center hover:bg-surface-tint active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+<!-- BottomNavBar Semantic Shell Match -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-temple-ivory dark:bg-inverse-surface border-t border-pandya-gold/10 rounded-t-xl shadow-[0_-4px_20px_rgba(34,30,26,0.05)] md:hidden">
+<!-- Home Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-[10px] mt-1">Home</span>
+</button>
+<!-- Areas Active -->
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined fill" data-icon="category">category</span>
+<span class="font-label-md text-[10px] mt-1">Areas</span>
+</button>
+<!-- Search Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-md text-[10px] mt-1">Search</span>
+</button>
+<!-- Settings Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-[10px] mt-1">Settings</span>
+</button>
+</nav>
+</body></html>

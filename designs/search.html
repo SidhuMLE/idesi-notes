@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Idesi Notes - Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-background": "#1f1b17",
+                        "outline-variant": "#ddc0bc",
+                        "secondary-fixed": "#ffdea6",
+                        "madder-red": "#8B2C24",
+                        "secondary-fixed-dim": "#f5be51",
+                        "primary": "#6c1510",
+                        "tertiary-fixed-dim": "#90d3cd",
+                        "on-surface": "#1f1b17",
+                        "temple-ivory": "#FAF5EC",
+                        "surface-dim": "#e1d8d2",
+                        "on-tertiary-fixed": "#00201e",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f8efe8",
+                        "pearl": "#F4EDE1",
+                        "pandya-gold": "#C8962C",
+                        "sandstone": "#EDE2CF",
+                        "surface-container-highest": "#eae1da",
+                        "surface-variant": "#eae1da",
+                        "on-primary-fixed": "#410001",
+                        "on-tertiary-container": "#88cbc5",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "surface": "#fff8f4",
+                        "primary-fixed": "#ffdad5",
+                        "on-primary-fixed-variant": "#82261e",
+                        "on-secondary-container": "#735200",
+                        "tertiary-container": "#055753",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container": "#f6ece5",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fff8f4",
+                        "stone": "#6E655A",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#a23d33",
+                        "primary-container": "#8b2c24",
+                        "surface-container-low": "#fbf2eb",
+                        "on-surface-variant": "#56423f",
+                        "kumkum": "#B23A2C",
+                        "error-container": "#ffdad6",
+                        "secondary": "#7c5800",
+                        "background": "#fff8f4",
+                        "inverse-primary": "#ffb4aa",
+                        "on-tertiary-fixed-variant": "#00504c",
+                        "inverse-surface": "#34302b",
+                        "surface-container-high": "#f0e6e0",
+                        "tertiary": "#003e3b",
+                        "peacock": "#155F5B",
+                        "brass": "#97701C",
+                        "secondary-container": "#fec658",
+                        "on-primary-container": "#ffa89d",
+                        "pitch-green": "#3E5C2E",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "outline": "#8a716e",
+                        "on-error": "#ffffff",
+                        "granite": "#221E1A",
+                        "tertiary-fixed": "#acefe9",
+                        "on-error-container": "#93000a"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        md: "16px",
+                        xxl: "48px",
+                        gutter: "24px",
+                        huge: "64px",
+                        lg: "24px",
+                        margin: "32px",
+                        base: "8px",
+                        xl: "32px",
+                        xs: "4px",
+                        sm: "8px"
+                    },
+                    fontFamily: {
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Fraunces"],
+                        "caption": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Fraunces"],
+                        "headline-lg": ["Fraunces"],
+                        "data-mono": ["JetBrains Mono"],
+                        "headline-md": ["Fraunces"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.02em", fontWeight: "600" }],
+                        "headline-sm": ["24px", { lineHeight: "1.3", fontWeight: "500" }],
+                        "caption": ["13px", { lineHeight: "1.4", fontWeight: "400" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "display": ["64px", { lineHeight: "1.1", fontWeight: "600" }],
+                        "headline-lg": ["40px", { lineHeight: "1.2", fontWeight: "500" }],
+                        "data-mono": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "500" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: theme('colors.temple-ivory');
+            color: theme('colors.granite');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-temple-ivory border-b border-pandya-gold/10 flat no shadows flex justify-between items-center px-4 py-sm max-w-full">
+<button class="text-granite p-2 rounded-full hover:bg-sandstone transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm text-granite font-bold">Search</h1>
+<div class="w-10"></div> <!-- Placeholder for balance -->
+</header>
+<main class="px-4 py-6 space-y-6">
+<!-- Search Input -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone pointer-events-none" data-icon="search">search</span>
+<input class="w-full pl-10 pr-10 py-3 bg-temple-ivory border border-stone rounded-lg font-body-md text-body-md text-granite placeholder-stone focus:outline-none focus:border-pandya-gold focus:ring-1 focus:ring-pandya-gold transition-colors" placeholder="Search notes, tasks, areas..." type="text" value="Briefing"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-stone hover:text-granite p-1 rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Filter Chips -->
+<div class="flex space-x-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-4 py-1.5 rounded-full bg-madder-red text-temple-ivory font-label-md text-label-md whitespace-nowrap active:scale-95 transition-transform shadow-[0_4px_12px_rgba(34,30,26,0.08)]">All</button>
+<button class="px-4 py-1.5 rounded-full bg-sandstone text-granite font-label-md text-label-md whitespace-nowrap active:scale-95 transition-transform hover:bg-pandya-gold/20">Tasks</button>
+<button class="px-4 py-1.5 rounded-full bg-sandstone text-granite font-label-md text-label-md whitespace-nowrap active:scale-95 transition-transform hover:bg-pandya-gold/20">Notes</button>
+</div>
+<!-- Results Section (Populated) -->
+<section>
+<h2 class="font-label-md text-caption text-stone uppercase tracking-wider mb-4">RESULTS</h2>
+<div class="space-y-4">
+<!-- Result 1 -->
+<article class="bg-sandstone rounded-xl p-4 shadow-[0_4px_12px_rgba(34,30,26,0.05)] cursor-pointer active:scale-[0.98] transition-transform">
+<div class="flex items-start space-x-3">
+<div class="mt-1 flex-shrink-0 text-stone">
+<span class="material-symbols-outlined" data-icon="check_box">check_box</span>
+</div>
+<div>
+<div class="font-caption text-caption text-stone mb-1">Work Projects</div>
+<h3 class="font-label-md text-body-md text-granite mb-2">Client <span class="text-madder-red">Briefing</span>: Q3 Redesign</h3>
+<p class="font-body-md text-caption text-stone line-clamp-2">Review the initial drafts for the Q3 layout changes. Ensure all stakeholder feedback is incorporated...</p>
+</div>
+</div>
+</article>
+<!-- Result 2 -->
+<article class="bg-sandstone rounded-xl p-4 shadow-[0_4px_12px_rgba(34,30,26,0.05)] cursor-pointer active:scale-[0.98] transition-transform">
+<div class="flex items-start space-x-3">
+<div class="mt-1 flex-shrink-0 text-stone">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<div class="font-caption text-caption text-stone mb-1">Personal</div>
+<h3 class="font-label-md text-body-md text-granite mb-2">Ideas for <span class="text-madder-red">new</span> structure</h3>
+<p class="font-body-md text-caption text-stone line-clamp-2">Thinking about reorganizing the home office setup. Need to measure the corner wall for a potential...</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Recent Searches (Commented out as per prompt to show Populated state, but included for structure if needed) -->
+<!--
+        <section class="mt-8">
+            <h2 class="font-label-md text-caption text-stone uppercase tracking-wider mb-4">RECENT SEARCHES</h2>
+            <ul class="space-y-3">
+                <li class="flex items-center space-x-3 text-granite hover:bg-sandstone p-2 rounded-lg cursor-pointer transition-colors">
+                    <span class="material-symbols-outlined text-stone" data-icon="schedule">schedule</span>
+                    <span class="font-body-md text-body-md">Q3 Planning</span>
+                </li>
+                <li class="flex items-center space-x-3 text-granite hover:bg-sandstone p-2 rounded-lg cursor-pointer transition-colors">
+                    <span class="material-symbols-outlined text-stone" data-icon="schedule">schedule</span>
+                    <span class="font-body-md text-body-md">Client Briefing</span>
+                </li>
+                <li class="flex items-center space-x-3 text-granite hover:bg-sandstone p-2 rounded-lg cursor-pointer transition-colors">
+                    <span class="material-symbols-outlined text-stone" data-icon="schedule">schedule</span>
+                    <span class="font-body-md text-body-md">Passport renewal</span>
+                </li>
+            </ul>
+        </section>
+        -->
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-temple-ivory border-t border-pandya-gold/10 shadow-[0_-4px_20px_rgba(34,30,26,0.05)] rounded-t-xl md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-label-md text-label-md mt-1">Areas</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined fill" data-icon="search" data-weight="fill">search</span>
+<span class="font-label-md text-label-md mt-1">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md mt-1">Settings</span>
+</button>
+</nav>
+<!-- Top Nav for Desktop (Hidden on mobile) -->
+<nav class="hidden md:flex fixed top-0 w-full z-50 bg-temple-ivory border-b border-pandya-gold/10 px-margin py-4 justify-between items-center">
+<div class="font-headline-sm text-headline-sm text-madder-red font-bold">Idesi Notes</div>
+<div class="flex space-x-6">
+<button class="text-granite hover:text-madder-red font-label-md text-label-md transition-colors">Home</button>
+<button class="text-granite hover:text-madder-red font-label-md text-label-md transition-colors">Areas</button>
+<button class="text-madder-red font-label-md text-label-md border-b-2 border-madder-red pb-1">Search</button>
+<button class="text-granite hover:text-madder-red font-label-md text-label-md transition-colors">Settings</button>
+</div>
+</nav>
+</body></html>

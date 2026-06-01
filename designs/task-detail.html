@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Task Detail - Idesi Notes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Fraunces:wght@500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#00504c",
+                        "secondary": "#7c5800",
+                        "outline": "#8a716e",
+                        "peacock": "#155F5B",
+                        "on-primary-fixed": "#410001",
+                        "on-secondary-fixed": "#271900",
+                        "inverse-primary": "#ffb4aa",
+                        "primary": "#6c1510",
+                        "inverse-on-surface": "#f8efe8",
+                        "on-primary-container": "#ffa89d",
+                        "primary-container": "#8b2c24",
+                        "surface-dim": "#e1d8d2",
+                        "surface-variant": "#eae1da",
+                        "on-primary-fixed-variant": "#82261e",
+                        "inverse-surface": "#34302b",
+                        "surface-tint": "#a23d33",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-container-high": "#f0e6e0",
+                        "on-background": "#1f1b17",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#055753",
+                        "on-tertiary-container": "#88cbc5",
+                        "on-error-container": "#93000a",
+                        "surface": "#fff8f4",
+                        "surface-bright": "#fff8f4",
+                        "surface-container": "#f6ece5",
+                        "tertiary-fixed-dim": "#90d3cd",
+                        "pearl": "#F4EDE1",
+                        "on-surface": "#1f1b17",
+                        "secondary-fixed": "#ffdea6",
+                        "brass": "#97701C",
+                        "tertiary": "#003e3b",
+                        "surface-container-highest": "#eae1da",
+                        "on-surface-variant": "#56423f",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fec658",
+                        "stone": "#6E655A",
+                        "on-tertiary-fixed": "#00201e",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "tertiary-fixed": "#acefe9",
+                        "error-container": "#ffdad6",
+                        "kumkum": "#B23A2C",
+                        "background": "#fff8f4",
+                        "primary-fixed": "#ffdad5",
+                        "madder-red": "#8B2C24",
+                        "on-secondary-container": "#735200",
+                        "pitch-green": "#3E5C2E",
+                        "temple-ivory": "#FAF5EC",
+                        "secondary-fixed-dim": "#f5be51",
+                        "pandya-gold": "#C8962C",
+                        "sandstone": "#EDE2CF",
+                        "granite": "#221E1A",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#fbf2eb",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#ddc0bc",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "huge": "64px",
+                        "margin": "32px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Fraunces"],
+                        "display": ["Fraunces"],
+                        "headline-lg": ["Fraunces"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Fraunces"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "display": ["64px", {"lineHeight": "1.1", "fontWeight": "600"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "caption": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .gopuram-step {
+                clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+            }
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+            .icon-filled {
+                font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            /* Styling for the segmented controls and inputs */
+            .segmented-input:checked + label {
+                @apply bg-sandstone text-madder-red border-pandya-gold/30;
+            }
+            .custom-input {
+                @apply w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface font-body-md text-body-md placeholder-stone/60;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-temple-ivory text-granite font-body-md antialiased min-h-screen pb-huge">
+<!-- TopAppBar -->
+<!-- Content logic applied: Suppress global navigation since this is a transactional/detail view with a back action. Using a contextual app bar. -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant/20 flat no shadows z-50 flex justify-between items-center px-md md:px-margin py-sm max-w-full">
+<button class="text-madder-red hover:text-primary transition-colors active:scale-95 duration-150 p-2 -ml-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex-1 flex justify-center items-center">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+                Q1 Planning
+            </button>
+</div>
+<button class="text-madder-red hover:text-primary transition-colors active:scale-95 duration-150 p-2 -mr-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-3xl mx-auto px-md md:px-margin pt-lg space-y-lg">
+<!-- Auto-save Indicator (Micro-interaction) -->
+<div class="flex justify-end h-4">
+<span class="font-caption text-caption text-stone opacity-0 transition-opacity duration-300 flex items-center gap-1" id="save-indicator">
+<span class="material-symbols-outlined text-[14px]">cloud_done</span> Saved
+             </span>
+</div>
+<!-- Editable Title -->
+<div class="relative group">
+<textarea class="w-full bg-transparent border-none p-0 focus:ring-0 font-headline-md text-headline-md text-granite resize-none overflow-hidden placeholder-stone/40 font-display" id="task-title" placeholder="Task Title" rows="2">Finalize Heritage Asset Review</textarea>
+<div class="absolute bottom-0 left-0 w-full h-[1px] bg-pandya-gold/0 group-focus-within:bg-pandya-gold/50 transition-colors duration-300"></div>
+</div>
+<!-- Status Segmented Control -->
+<div class="space-y-sm pt-sm">
+<label class="font-label-md text-label-md text-stone uppercase tracking-widest text-[11px]">Status</label>
+<div class="flex bg-surface-container-high rounded-lg p-1 gap-1">
+<div class="flex-1 relative">
+<input checked="" class="peer sr-only segmented-input" id="status-open" name="status" type="radio"/>
+<label class="cursor-pointer flex items-center justify-center py-2 px-3 rounded-md font-label-md text-label-md text-stone hover:text-granite transition-colors text-center border border-transparent" for="status-open">
+                        Open
+                    </label>
+</div>
+<div class="flex-1 relative">
+<input class="peer sr-only segmented-input" id="status-progress" name="status" type="radio"/>
+<label class="cursor-pointer flex items-center justify-center py-2 px-3 rounded-md font-label-md text-label-md text-stone hover:text-granite transition-colors text-center border border-transparent" for="status-progress">
+                        In Progress
+                    </label>
+</div>
+<div class="flex-1 relative">
+<input class="peer sr-only segmented-input" id="status-done" name="status" type="radio"/>
+<label class="cursor-pointer flex items-center justify-center py-2 px-3 rounded-md font-label-md text-label-md text-stone hover:text-granite transition-colors text-center border border-transparent" for="status-done">
+                        Done
+                    </label>
+</div>
+</div>
+</div>
+<!-- Details Glassmorphism Card / Bento Layout -->
+<div class="bg-sandstone rounded-xl p-md md:p-lg shadow-[0_8px_30px_rgba(34,30,26,0.06)] space-y-md border border-pandya-gold/10 relative overflow-hidden gopuram-step">
+<!-- Decorative background element -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-pandya-gold/5 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Priority Row -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-y-sm pb-md border-b border-outline-variant/30 relative z-10">
+<div class="flex items-center gap-2 text-stone">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[11px]">Priority</span>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-md font-label-md text-label-md text-stone bg-surface hover:bg-temple-ivory border border-transparent hover:border-pandya-gold/20 transition-all focus:bg-pearl focus:text-madder-red focus:border-pandya-gold/30">Low</button>
+<button class="px-3 py-1.5 rounded-md font-label-md text-label-md text-madder-red bg-pearl border border-pandya-gold/30 transition-all shadow-sm">Medium</button>
+<button class="px-3 py-1.5 rounded-md font-label-md text-label-md text-stone bg-surface hover:bg-temple-ivory border border-transparent hover:border-pandya-gold/20 transition-all focus:bg-pearl focus:text-madder-red focus:border-pandya-gold/30">High</button>
+</div>
+</div>
+<!-- Due Date Row -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-y-sm pb-md border-b border-outline-variant/30 relative z-10 group">
+<div class="flex items-center gap-2 text-stone group-focus-within:text-madder-red transition-colors">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[11px]">Due Date</span>
+</div>
+<div class="flex-1 md:text-right">
+<input class="bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-granite md:text-right w-full cursor-pointer hover:text-madder-red transition-colors" type="datetime-local" value="2023-11-20T14:30"/>
+</div>
+</div>
+<!-- Location Row -->
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-y-sm relative z-10 group pt-sm">
+<div class="flex items-center gap-2 text-stone group-focus-within:text-madder-red transition-colors mt-1">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[11px]">Location</span>
+</div>
+<div class="flex-1 w-full bg-surface-container-high/50 rounded-lg p-2 border border-transparent group-focus-within:border-pandya-gold/30 transition-colors">
+<input class="custom-input" placeholder="Add address or venue..." type="text" value="Tanjore Studios, North Wing"/>
+</div>
+</div>
+</div>
+<!-- Kolam Hairline Divider -->
+<div class="w-full flex justify-center py-sm opacity-60">
+<div class="h-[2px] w-full max-w-[200px] border-t-2 border-dotted border-pandya-gold"></div>
+</div>
+<!-- Task Notes Area -->
+<div class="space-y-sm">
+<label class="flex items-center gap-2 text-granite font-headline-sm text-headline-sm font-display">
+<span class="material-symbols-outlined icon-filled text-pandya-gold text-[20px]">notes</span>
+                 Notes &amp; Details
+            </label>
+<div class="bg-temple-ivory border border-stone/20 focus-within:border-pandya-gold/60 rounded-xl p-md transition-colors duration-300 shadow-[inset_0_2px_10px_rgba(34,30,26,0.02)]">
+<textarea class="w-full h-48 bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-granite resize-none placeholder-stone/50" id="task-notes" placeholder="Capture thoughts, requirements, or links here...">Ensure we review the archived textures from the 2019 collection. The client specifically requested the integration of brass tones.
+                
+- Check lighting balances
+- Coordinate with archival team by Tuesday
+- Update main deck</textarea>
+</div>
+</div>
+</main>
+<script>
+        // Auto-resize title textarea
+        const titleTextarea = document.getElementById('task-title');
+        function resizeTextarea() {
+            titleTextarea.style.height = 'auto';
+            titleTextarea.style.height = titleTextarea.scrollHeight + 'px';
+        }
+        titleTextarea.addEventListener('input', resizeTextarea);
+        // Initial resize
+        window.addEventListener('load', resizeTextarea);
+
+        // Simulated Auto-save interaction
+        const inputs = document.querySelectorAll('input, textarea, button');
+        const saveIndicator = document.getElementById('save-indicator');
+        let timeout = null;
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                saveIndicator.classList.remove('opacity-100');
+                saveIndicator.classList.add('opacity-0');
+                
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    saveIndicator.classList.remove('opacity-0');
+                    saveIndicator.classList.add('opacity-100');
+                    
+                    // Fade out after a few seconds
+                    setTimeout(() => {
+                        saveIndicator.classList.remove('opacity-100');
+                        saveIndicator.classList.add('opacity-0');
+                    }, 3000);
+                }, 800); // Save 800ms after last keystroke
+            });
+        });
+    </script>
+</body></html>

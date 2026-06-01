@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  /* iDeSi brand colors */
+  --color-madder-red: #8B2C24;
+  --color-kumkum: #B23A2C;
+  --color-pandya-gold: #C8962C;
+  --color-brass: #97701C;
+  --color-temple-ivory: #FAF5EC;
+  --color-sandstone: #EDE2CF;
+  --color-pearl: #F4EDE1;
+  --color-granite: #221E1A;
+  --color-stone: #6E655A;
+  --color-peacock: #155F5B;
+  --color-pitch-green: #3E5C2E;
+
+  /* Material Design 3 surface tokens */
+  --color-primary: #6c1510;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #8b2c24;
+  --color-on-primary-container: #ffa89d;
+  --color-primary-fixed: #ffdad5;
+  --color-primary-fixed-dim: #ffb4aa;
+  --color-on-primary-fixed: #410001;
+  --color-on-primary-fixed-variant: #82261e;
+  --color-inverse-primary: #ffb4aa;
+  --color-surface-tint: #a23d33;
+
+  --color-secondary: #7c5800;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fec658;
+  --color-on-secondary-container: #735200;
+  --color-secondary-fixed: #ffdea6;
+  --color-secondary-fixed-dim: #f5be51;
+  --color-on-secondary-fixed: #271900;
+  --color-on-secondary-fixed-variant: #5e4200;
+
+  --color-tertiary: #003e3b;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #055753;
+  --color-on-tertiary-container: #88cbc5;
+  --color-tertiary-fixed: #acefe9;
+  --color-tertiary-fixed-dim: #90d3cd;
+  --color-on-tertiary-fixed: #00201e;
+  --color-on-tertiary-fixed-variant: #00504c;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-background: #fff8f4;
+  --color-on-background: #1f1b17;
+  --color-surface: #fff8f4;
+  --color-surface-dim: #e1d8d2;
+  --color-surface-bright: #fff8f4;
+  --color-surface-variant: #eae1da;
+  --color-on-surface: #1f1b17;
+  --color-on-surface-variant: #56423f;
+  --color-inverse-surface: #34302b;
+  --color-inverse-on-surface: #f8efe8;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fbf2eb;
+  --color-surface-container: #f6ece5;
+  --color-surface-container-high: #f0e6e0;
+  --color-surface-container-highest: #eae1da;
+
+  --color-outline: #8a716e;
+  --color-outline-variant: #ddc0bc;
+
+  /* Typography */
+  --font-display: "Fraunces", serif;
+  --font-headline-lg: "Fraunces", serif;
+  --font-headline-md: "Fraunces", serif;
+  --font-headline-sm: "Fraunces", serif;
+  --font-body-lg: "Inter", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-label-md: "Inter", sans-serif;
+  --font-caption: "Inter", sans-serif;
+  --font-data-mono: "JetBrains Mono", monospace;
+
+  /* Spacing (8px base) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --spacing-huge: 64px;
+  --spacing-gutter: 24px;
+  --spacing-margin: 32px;
+
+  /* Border radius */
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+}
+
+body {
+  background-color: var(--color-temple-ivory);
+  color: var(--color-granite);
+  font-family: "Inter", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Horizontal scroll fade mask */
+.scroll-mask {
+  mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+}
