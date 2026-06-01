@@ -32,9 +32,8 @@ it('shows recent searches section when query is empty', () => {
   expect(screen.getByText('RECENT SEARCHES')).toBeInTheDocument()
 })
 
-it('shows the hard-coded recent search items', () => {
+it('shows empty state message when no recent searches stored', () => {
+  localStorage.removeItem('idesi-recent-searches')
   renderSearch()
-  expect(screen.getByText('Q3 Planning')).toBeInTheDocument()
-  expect(screen.getByText('Client Briefing')).toBeInTheDocument()
-  expect(screen.getByText('Military')).toBeInTheDocument()
+  expect(screen.getByText('No recent searches')).toBeInTheDocument()
 })

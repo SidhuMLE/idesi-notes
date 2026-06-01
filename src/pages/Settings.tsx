@@ -7,7 +7,6 @@ import { useAppStore } from '../store/useAppStore'
 
 export default function Settings() {
   const { sections } = useAppStore()
-  const [colorMode, setColorMode] = useState<'Light' | 'Dark' | 'System'>('Light')
   const [dueDateReminders, setDueDateReminders] = useState(true)
   const [dailySummary, setDailySummary] = useState(false)
   const navigate = useNavigate()
@@ -60,40 +59,12 @@ export default function Settings() {
               </ul>
             </div>
             <button
-              onClick={() => navigate('/areas/new')}
+              onClick={() => navigate('/areas')}
               className="w-full py-3 px-6 border border-pandya-gold rounded-lg font-label-md text-granite hover:bg-sandstone/20 transition-all flex items-center justify-center space-x-2"
             >
               <span className="material-symbols-outlined text-[20px]">edit</span>
-              <span>Manage Areas</span>
+              <span>Edit Areas</span>
             </button>
-          </section>
-
-          {/* Appearance */}
-          <section className="space-y-4">
-            <h2 className="px-2 font-label-md text-label-md text-stone uppercase tracking-widest">
-              Appearance
-            </h2>
-            <div className="bg-sandstone/30 rounded-xl p-4 border border-pandya-gold/10">
-              <div className="flex items-center justify-between">
-                <span className="font-body-md text-granite">Colour mode</span>
-                <div className="grid grid-cols-3 p-1 bg-pearl rounded-lg border border-outline-variant/20">
-                  {(['Light', 'Dark', 'System'] as const).map((m) => (
-                    <motion.button
-                      key={m}
-                      whileTap={{ scale: 0.96 }}
-                      onClick={() => setColorMode(m)}
-                      className={`py-2 px-3 text-center rounded-md font-label-md text-[12px] transition-all ${
-                        colorMode === m
-                          ? 'bg-white text-madder-red shadow-sm'
-                          : 'text-stone hover:text-granite'
-                      }`}
-                    >
-                      {m}
-                    </motion.button>
-                  ))}
-                </div>
-              </div>
-            </div>
           </section>
 
           {/* Notifications */}

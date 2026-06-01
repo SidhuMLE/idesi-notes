@@ -20,11 +20,9 @@ it('renders "Settings" heading', () => {
   expect(screen.getByRole('heading', { name: 'Settings' })).toBeInTheDocument()
 })
 
-it('colour mode options render: Light, Dark, System', () => {
+it('"Edit Areas" button is present', () => {
   renderSettings()
-  expect(screen.getByRole('button', { name: 'Light' })).toBeInTheDocument()
-  expect(screen.getByRole('button', { name: 'Dark' })).toBeInTheDocument()
-  expect(screen.getByRole('button', { name: 'System' })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: /edit areas/i })).toBeInTheDocument()
 })
 
 it('notification toggle for "Due date reminders" is present', () => {

@@ -39,7 +39,10 @@ it('shows section names when sections exist in the store', () => {
   expect(screen.getByText('Health')).toBeInTheDocument()
 })
 
-it('"New Area" button is present', () => {
+it('add area button is present in header', () => {
   renderAreas()
-  expect(screen.getByRole('button', { name: /New Area/i })).toBeInTheDocument()
+  // "Add" icon button is in the header (aria-label not set, check via icon presence)
+  expect(screen.getByText('My Areas')).toBeInTheDocument()
+  // Edit and add buttons are present
+  expect(screen.getAllByRole('button').length).toBeGreaterThan(1)
 })

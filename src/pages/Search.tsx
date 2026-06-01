@@ -5,13 +5,30 @@ import BottomNav from '../components/BottomNav'
 import PageWrapper from '../components/PageWrapper'
 import { useAppStore } from '../store/useAppStore'
 
+const RECENT_KEY = 'idesi-recent-searches'
+const MAX_RECENT = 5
+
+function getRecentSearches(): string[] {
+  try {
+    return JSON.parse(localStorage.getItem(RECENT_KEY) ?? '[]')
+  } catch {
+    return []
+  }
+}
+
+function addRecentSearch(query: string) {
+  if (!query.trim()) return
+  const recent = getRecentSearches().filter(s => s !== query)
+  recent.unshift(query)
+  localStorage.setItem(RECENT_KEY, JSON.stringify(recent.slice(0, MAX_RECENT)))
+}
+
 export default function Search() {
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState<'All' | 'Tasks' | 'Notes'>('All')
+  const [recentSearches, setRecentSearches] = useState<string[]>(getRecentSearches)
   const navigate = useNavigate()
   const { tasks, notes, sections } = useAppStore()
-
-  const recentSearches = ['Q3 Planning', 'Client Briefing', 'Military']
 
   const matchedTasks =
     filter !== 'Notes'
@@ -44,6 +61,18 @@ export default function Search() {
     )
   }
 
+  const handleBlur = () => {
+    if (query.trim()) {
+      addRecentSearch(query)
+      setRecentSearches(getRecentSearches())
+    }
+  }
+
+  const handleClearRecent = () => {
+    localStorage.removeItem(RECENT_KEY)
+    setRecentSearches([])
+  }
+
   // Combined results array for indexed animation delays
   const taskResults = matchedTasks.map((task, index) => ({ type: 'task' as const, item: task, index }))
   const noteResults = matchedNotes.map((note, index) => ({ type: 'note' as const, item: note, index: taskResults.length + index }))
@@ -74,6 +103,7 @@ export default function Search() {
               autoFocus
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              onBlur={handleBlur}
               className="w-full pl-10 pr-10 py-3 bg-temple-ivory border border-stone rounded-lg font-body-md text-body-md text-granite placeholder-stone focus:outline-none focus:border-pandya-gold focus:ring-1 focus:ring-pandya-gold transition-colors"
               placeholder="Search notes, tasks, areas..."
             />
@@ -187,21 +217,35 @@ export default function Search() {
           {/* Recent searches (shown when no query) */}
           {!query && (
             <section>
-              <h2 className="font-label-md text-caption text-stone uppercase tracking-wider mb-4">
-                RECENT SEARCHES
-              </h2>
-              <ul className="space-y-3">
-                {recentSearches.map((s) => (
-                  <li
-                    key={s}
-                    onClick={() => setQuery(s)}
-                    className="flex items-center space-x-3 text-granite hover:bg-sandstone p-2 rounded-lg cursor-pointer transition-colors"
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-label-md text-caption text-stone uppercase tracking-wider">
+                  RECENT SEARCHES
+                </h2>
+                {recentSearches.length > 0 && (
+                  <button
+                    onClick={handleClearRecent}
+                    className="font-label-md text-caption text-stone hover:text-madder-red transition-colors"
                   >
-                    <span className="material-symbols-outlined text-stone">schedule</span>
-                    <span className="font-body-md text-body-md">{s}</span>
-                  </li>
-                ))}
-              </ul>
+                    Clear
+                  </button>
+                )}
+              </div>
+              {recentSearches.length === 0 ? (
+                <p className="font-body-md text-body-md text-stone">No recent searches</p>
+              ) : (
+                <ul className="space-y-3">
+                  {recentSearches.map((s) => (
+                    <li
+                      key={s}
+                      onClick={() => setQuery(s)}
+                      className="flex items-center space-x-3 text-granite hover:bg-sandstone p-2 rounded-lg cursor-pointer transition-colors"
+                    >
+                      <span className="material-symbols-outlined text-stone">schedule</span>
+                      <span className="font-body-md text-body-md">{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </section>
           )}
         </main>

@@ -58,16 +58,34 @@ const MotionLink = motion(Link)
 
 export default function Home() {
   const navigate = useNavigate()
-  const { sections, tasksDueToday, tasksUpcoming, openTaskCountBySection, updateTask, addTask } =
+  const { sections, tasksDueToday, openTaskCountBySection, updateTask, addTask } =
     useAppStore()
 
   const dueToday = tasksDueToday()
-  const upcoming = tasksUpcoming(14)
 
+  // ── Quick-add state ──────────────────────────────────────────────────────
   const [showQuickAdd, setShowQuickAdd] = useState(false)
   const [quickTitle, setQuickTitle] = useState('')
   const [quickSection, setQuickSection] = useState('')
   const [quickDate, setQuickDate] = useState('')
+  const [showAreaPicker, setShowAreaPicker] = useState(false)
+
+  // ── Upcoming state ───────────────────────────────────────────────────────
+  const [priorityFilter, setPriorityFilter] = useState<'all' | 'high' | 'medium' | 'low'>('all')
+
+  const allTasks = useAppStore(s => s.tasks)
+  const upcomingTasks = allTasks
+    .filter(t => t.status !== 'done' && t.section_id)
+    .filter(t => priorityFilter === 'all' || t.priority === priorityFilter)
+    .sort((a, b) => {
+      const priorityOrder: Record<string, number> = { high: 0, medium: 1, low: 2 }
+      const pDiff = (priorityOrder[a.priority] ?? 3) - (priorityOrder[b.priority] ?? 3)
+      if (pDiff !== 0) return pDiff
+      if (a.due_date && b.due_date) return a.due_date.localeCompare(b.due_date)
+      if (a.due_date) return -1
+      if (b.due_date) return 1
+      return 0
+    })
 
   function getSectionName(task: Task): string {
     return sections.find((s) => s.id === task.section_id)?.name ?? 'Unknown'
@@ -80,16 +98,24 @@ export default function Home() {
   function handleQuickAdd() {
     if (!quickTitle.trim() || !quickSection) return
     addTask({
-      title: quickTitle.trim(),
       section_id: quickSection,
+      title: quickTitle.trim(),
       status: 'open',
       priority: 'medium',
       due_date: quickDate || undefined,
     })
+    setShowQuickAdd(false)
     setQuickTitle('')
     setQuickSection('')
     setQuickDate('')
-    setShowQuickAdd(false)
+    sessionStorage.setItem('nav-direction', 'forward')
+    navigate('/areas/' + quickSection)
+  }
+
+  const priorityDotColor: Record<string, string> = {
+    high: 'bg-madder-red',
+    medium: 'bg-pandya-gold',
+    low: 'bg-peacock',
   }
 
   return (
@@ -170,18 +196,30 @@ export default function Home() {
           {/* Upcoming */}
           <section className="space-y-4">
             <h3 className="font-headline-sm text-headline-sm text-granite">Upcoming</h3>
-            {upcoming.length === 0 ? (
-              <p className="font-body-md text-body-md text-stone py-4">No upcoming tasks.</p>
+
+            {/* Priority filter chips */}
+            <div className="flex gap-2 overflow-x-auto hide-scrollbar pb-1">
+              {(['all', 'high', 'medium', 'low'] as const).map(p => (
+                <motion.button key={p} whileTap={{ scale: 0.94 }}
+                  onClick={() => setPriorityFilter(p)}
+                  className={`px-3 py-1 rounded-full font-label-md text-label-md capitalize whitespace-nowrap transition-colors ${priorityFilter === p ? 'bg-madder-red text-temple-ivory' : 'bg-sandstone text-stone hover:bg-sandstone/80'}`}>
+                  {p === 'all' ? 'All' : p.charAt(0).toUpperCase() + p.slice(1)}
+                </motion.button>
+              ))}
+            </div>
+
+            {upcomingTasks.length === 0 ? (
+              <p className="font-body-md text-body-md text-stone py-4">No tasks found.</p>
             ) : (
               <div className="space-y-3">
-                {upcoming.slice(0, 10).map((task) => (
+                {upcomingTasks.slice(0, 10).map((task) => (
                   <motion.div
                     key={task.id}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => navigate('/tasks/' + task.id)}
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-sandstone/50 transition-colors border-b border-pandya-gold/10 last:border-0 group cursor-pointer"
                   >
-                    <div className="w-2 h-2 rounded-full bg-madder-red mt-1 self-start shrink-0" />
+                    <div className={`w-2 h-2 rounded-full mt-1 self-start shrink-0 ${priorityDotColor[task.priority] ?? 'bg-stone'}`} />
                     <div className="flex-1 min-w-0">
                       <p className="font-label-md text-label-md text-stone uppercase tracking-wide mb-1">
                         {getSectionName(task)}
@@ -199,7 +237,7 @@ export default function Home() {
                 ))}
               </div>
             )}
-            {upcoming.length > 10 && (
+            {upcomingTasks.length > 10 && (
               <button className="w-full py-3 text-center font-label-md text-label-md text-madder-red hover:bg-madder-red/5 rounded-lg transition-colors border border-transparent hover:border-madder-red/20">
                 View all upcoming
               </button>
@@ -270,18 +308,16 @@ export default function Home() {
             className="w-full bg-temple-ivory border border-stone/30 rounded-lg px-4 py-3 font-body-md text-body-md text-granite placeholder:text-stone/50 focus:outline-none focus:border-pandya-gold focus:ring-1 focus:ring-pandya-gold"
           />
 
-          <select
-            value={quickSection}
-            onChange={(e) => setQuickSection(e.target.value)}
-            className="w-full bg-temple-ivory border border-stone/30 rounded-lg px-4 py-3 font-body-md text-body-md text-granite focus:outline-none focus:border-pandya-gold"
+          {/* Area picker button */}
+          <button
+            onClick={() => setShowAreaPicker(true)}
+            className="w-full flex items-center justify-between bg-temple-ivory border border-stone/30 rounded-lg px-4 py-3 font-body-md text-body-md text-granite focus:outline-none"
           >
-            <option value="">Select area...</option>
-            {sections.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.name}
-              </option>
-            ))}
-          </select>
+            <span className={quickSection ? 'text-granite' : 'text-stone/50'}>
+              {quickSection ? sections.find(s => s.id === quickSection)?.name : 'Select area...'}
+            </span>
+            <span className="material-symbols-outlined text-stone text-[20px]">expand_more</span>
+          </button>
 
           <input
             type="date"
@@ -297,6 +333,18 @@ export default function Home() {
           >
             Add Task
           </button>
+        </BottomSheet>
+
+        {/* Area picker bottom sheet */}
+        <BottomSheet open={showAreaPicker} onClose={() => setShowAreaPicker(false)} title="Select Area">
+          {sections.map(s => (
+            <button key={s.id} onClick={() => { setQuickSection(s.id); setShowAreaPicker(false) }}
+              className={`w-full flex items-center gap-3 py-3 px-2 rounded-lg transition-colors text-left ${quickSection === s.id ? 'bg-sandstone' : 'hover:bg-sandstone/50'}`}>
+              <span className="material-symbols-outlined text-madder-red">{s.icon}</span>
+              <span className="font-body-md text-body-md text-granite">{s.name}</span>
+              {quickSection === s.id && <span className="material-symbols-outlined text-madder-red ml-auto">check</span>}
+            </button>
+          ))}
         </BottomSheet>
 
         <BottomNav />
