@@ -71,8 +71,8 @@ jobs:
       - name: Add Android platform
         run: npx cap add android
 
-      - name: Patch Gradle wrapper to 8.9 (Capacitor template ships 8.0.2, JDK 21 needs 8.4+)
-        run: sed -i 's|distributionUrl=.*|distributionUrl=https\\://services.gradle.org/distributions/gradle-8.9-all.zip|' android/gradle/wrapper/gradle-wrapper.properties
+      - name: Patch Gradle wrapper to 8.13 (Capacitor template ships 8.0.2, AGP requires 8.13+)
+        run: sed -i 's|distributionUrl=.*|distributionUrl=https\\://services.gradle.org/distributions/gradle-8.13-all.zip|' android/gradle/wrapper/gradle-wrapper.properties
 
       - name: Generate app icons
         run: node scripts/generate-icons.mjs
