@@ -72,7 +72,9 @@ jobs:
         run: sed -i 's|distributionUrl=.*|distributionUrl=https\\://services.gradle.org/distributions/gradle-8.9-all.zip|' android/gradle/wrapper/gradle-wrapper.properties
 
       - name: Downgrade Java source/target to 17 in all build.gradle files
-        run: find android -name "*.gradle" -exec sed -i 's/JavaVersion\.VERSION_21/JavaVersion.VERSION_17/g' {} \;
+        run: |
+          find android node_modules/@capacitor -name "*.gradle" -exec sed -i 's/JavaVersion\.VERSION_21/JavaVersion.VERSION_17/g' {} \;
+          find android node_modules/@capacitor -name "*.gradle.kts" -exec sed -i 's/JavaVersion\.VERSION_21/JavaVersion.VERSION_17/g' {} \;
 
       - name: Generate app icons
         run: node scripts/generate-icons.mjs
