@@ -12,9 +12,12 @@ function now() {
 }
 
 interface AppStore {
+  displayName: string
   sections: Section[]
   tasks: Task[]
   notes: Note[]
+
+  setDisplayName: (name: string) => void
 
   // Section actions
   addSection: (data: Omit<Section, 'id' | 'created_at' | 'order'>) => void
@@ -43,9 +46,12 @@ interface AppStore {
 export const useAppStore = create<AppStore>()(
   persist(
     (set, get) => ({
+      displayName: '',
       sections: [],
       tasks: [],
       notes: [],
+
+      setDisplayName: (name) => set({ displayName: name }),
 
       addSection: (data) =>
         set((s) => ({

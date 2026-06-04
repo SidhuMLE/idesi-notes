@@ -4,7 +4,7 @@ import { useAppStore } from '../store/useAppStore'
 import Home from '../pages/Home'
 
 beforeEach(() => {
-  useAppStore.setState({ sections: [], tasks: [], notes: [] })
+  useAppStore.setState({ displayName: '', sections: [], tasks: [], notes: [] })
 })
 
 function renderHome() {
@@ -15,9 +15,9 @@ function renderHome() {
   )
 }
 
-it('renders a time-appropriate greeting containing "Sidharth"', () => {
+it('renders a time-appropriate greeting with fallback name "Explorer"', () => {
   renderHome()
-  expect(screen.getByText(/Sidharth/)).toBeInTheDocument()
+  expect(screen.getByText(/Explorer/)).toBeInTheDocument()
 })
 
 it('renders "Due Today" section heading', () => {

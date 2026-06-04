@@ -59,7 +59,7 @@ const MotionLink = motion(Link)
 export default function Home() {
   const navigate = useNavigate()
   const { hideNav, showNav } = useNav()
-  const { sections, tasksDueToday, openTaskCountBySection, updateTask, addTask } =
+  const { sections, tasksDueToday, openTaskCountBySection, updateTask, addTask, displayName } =
     useAppStore()
 
   const dueToday = tasksDueToday()
@@ -133,7 +133,7 @@ export default function Home() {
               {formatHeaderDate()}
             </p>
             <h2 className="font-headline-md text-headline-md text-granite max-w-[80%]">
-              {getGreeting()}, Sidharth
+              {getGreeting()}, {displayName || 'Explorer'}
             </h2>
           </section>
 

@@ -4,7 +4,7 @@ import { useAppStore } from '../store/useAppStore'
 import Settings from '../pages/Settings'
 
 beforeEach(() => {
-  useAppStore.setState({ sections: [], tasks: [], notes: [] })
+  useAppStore.setState({ displayName: '', sections: [], tasks: [], notes: [] })
 })
 
 function renderSettings() {

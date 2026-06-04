@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { version as appVersion } from '../../package.json'
 import { motion } from 'framer-motion'
 import {
   DndContext,
@@ -48,7 +49,7 @@ function SortableAreaRow({ section }: { section: Section }) {
 }
 
 export default function Settings() {
-  const { sections, reorderSections } = useAppStore()
+  const { sections, reorderSections, displayName, setDisplayName } = useAppStore()
   const [dueDateReminders, setDueDateReminders] = useState(true)
   const [dailySummary, setDailySummary] = useState(false)
   const navigate = useNavigate()
@@ -90,6 +91,33 @@ export default function Settings() {
         </header>
 
         <main className="flex-1 px-4 pt-6 pb-16 space-y-8 overflow-y-auto">
+          {/* Profile */}
+          <section className="space-y-4">
+            <h2 className="px-2 font-label-md text-label-md text-stone uppercase tracking-widest">
+              Profile
+            </h2>
+            <div className="bg-sandstone/30 rounded-xl overflow-hidden border border-pandya-gold/10 shadow-[0_4px_12px_rgba(34,30,26,0.04)]">
+              <div className="flex items-center gap-4 p-4">
+                <div className="w-10 h-10 rounded-full bg-madder-red/10 flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined text-madder-red text-[20px]">person</span>
+                </div>
+                <div className="flex-1">
+                  <label className="font-caption text-caption text-stone block mb-1">
+                    Your name
+                  </label>
+                  <input
+                    type="text"
+                    value={displayName}
+                    onChange={(e) => setDisplayName(e.target.value)}
+                    placeholder="Explorer"
+                    maxLength={32}
+                    className="w-full bg-transparent font-body-md text-body-md text-granite placeholder:text-stone/40 outline-none border-b border-pandya-gold/20 focus:border-madder-red/50 pb-1 transition-colors"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* My Areas */}
           <section className="space-y-4">
             <h2 className="px-2 font-label-md text-label-md text-stone uppercase tracking-widest">
@@ -181,7 +209,7 @@ export default function Settings() {
 
           {/* Version */}
           <p className="text-center font-caption text-caption text-stone pb-4">
-            Idesi Notes v0.1.0
+            Idesi Notes v{appVersion}
           </p>
         </main>
       </div>
