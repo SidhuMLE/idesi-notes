@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { version as appVersion } from '../../package.json'
 import { motion } from 'framer-motion'
@@ -49,10 +48,48 @@ function SortableAreaRow({ section }: { section: Section }) {
 }
 
 export default function Settings() {
-  const { sections, reorderSections, displayName, setDisplayName } = useAppStore()
-  const [dueDateReminders, setDueDateReminders] = useState(true)
-  const [dailySummary, setDailySummary] = useState(false)
+  const {
+    sections, reorderSections, displayName, setDisplayName,
+    notifDueDateReminders, setNotifDueDateReminders,
+    notifDailySummary, setNotifDailySummary,
+    notifDailySummaryTime, setNotifDailySummaryTime,
+    tasks,
+  } = useAppStore()
   const navigate = useNavigate()
+
+  async function handleToggleDueDateReminders(v: boolean) {
+    const { requestNotificationPermission, scheduleDueReminder, cancelDueReminder } = await import('../services/notifications')
+    if (v) {
+      const granted = await requestNotificationPermission()
+      if (!granted) return
+      for (const task of tasks.filter(t => t.due_date && t.status !== 'done')) {
+        await scheduleDueReminder(task)
+      }
+    } else {
+      for (const task of tasks) await cancelDueReminder(task.id)
+    }
+    setNotifDueDateReminders(v)
+  }
+
+  async function handleToggleDailySummary(v: boolean) {
+    const { requestNotificationPermission, scheduleDailySummary, cancelDailySummary } = await import('../services/notifications')
+    if (v) {
+      const granted = await requestNotificationPermission()
+      if (!granted) return
+      await scheduleDailySummary(notifDailySummaryTime, tasks)
+    } else {
+      await cancelDailySummary()
+    }
+    setNotifDailySummary(v)
+  }
+
+  async function handleSummaryTimeChange(t: string) {
+    setNotifDailySummaryTime(t)
+    if (notifDailySummary) {
+      const { scheduleDailySummary } = await import('../services/notifications')
+      await scheduleDailySummary(t, tasks)
+    }
+  }
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -150,40 +187,51 @@ export default function Settings() {
               <div className="flex items-center justify-between p-4 border-b border-pandya-gold/10">
                 <span className="font-body-md text-granite">Due date reminders</span>
                 <button
-                  onClick={() => setDueDateReminders((v) => !v)}
+                  onClick={() => handleToggleDueDateReminders(!notifDueDateReminders)}
                   className={`w-12 h-6 rounded-full relative flex items-center transition-colors duration-200 ${
-                    dueDateReminders ? 'bg-madder-red' : 'bg-stone/30'
+                    notifDueDateReminders ? 'bg-madder-red' : 'bg-stone/30'
                   }`}
                 >
                   <motion.span
                     layout
                     transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                     className="w-5 h-5 bg-white rounded-full shadow-sm absolute"
-                    style={{ left: dueDateReminders ? 'calc(100% - 22px)' : '2px' }}
+                    style={{ left: notifDueDateReminders ? 'calc(100% - 22px)' : '2px' }}
                   />
                 </button>
               </div>
-              <div className="flex items-center justify-between p-4">
+              <div className="flex items-center justify-between p-4 border-b border-pandya-gold/10">
                 <div>
                   <span className="font-body-md text-granite block">Daily summary</span>
                   <span className="font-caption text-caption text-stone">
-                    A morning overview of today's tasks
+                    Morning overview of today's tasks
                   </span>
                 </div>
                 <button
-                  onClick={() => setDailySummary((v) => !v)}
+                  onClick={() => handleToggleDailySummary(!notifDailySummary)}
                   className={`w-12 h-6 rounded-full relative flex items-center transition-colors duration-200 ml-4 flex-shrink-0 ${
-                    dailySummary ? 'bg-madder-red' : 'bg-stone/30'
+                    notifDailySummary ? 'bg-madder-red' : 'bg-stone/30'
                   }`}
                 >
                   <motion.span
                     layout
                     transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                     className="w-5 h-5 bg-white rounded-full shadow-sm absolute"
-                    style={{ left: dailySummary ? 'calc(100% - 22px)' : '2px' }}
+                    style={{ left: notifDailySummary ? 'calc(100% - 22px)' : '2px' }}
                   />
                 </button>
               </div>
+              {notifDailySummary && (
+                <div className="flex items-center justify-between p-4">
+                  <span className="font-body-md text-granite">Summary time</span>
+                  <input
+                    type="time"
+                    value={notifDailySummaryTime}
+                    onChange={(e) => handleSummaryTimeChange(e.target.value)}
+                    className="bg-transparent border-none font-body-md text-body-md text-granite focus:ring-0 text-right cursor-pointer"
+                  />
+                </div>
+              )}
             </div>
           </section>
 

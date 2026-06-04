@@ -12,13 +12,14 @@ export default function TaskDetail() {
   const { tasks, sections, updateTask, deleteTask } = useAppStore()
 
   const task = tasks.find(t => t.id === taskId)
-  if (!task) return <div>Task not found</div>
+  if (!task) return null
 
   // Local state mirrors task fields
   const [title, setTitle] = useState(task.title)
   const [status, setStatus] = useState<TaskStatus>(task.status)
   const [priority, setPriority] = useState<TaskPriority>(task.priority)
   const [dueDate, setDueDate] = useState(task.due_date || '')
+  const [dueTime, setDueTime] = useState(task.due_time || '')
   const [location, setLocation] = useState(task.location || '')
   const [notes, setNotes] = useState(task.body_notes || '')
   const [saved, setSaved] = useState(false)
@@ -34,6 +35,7 @@ export default function TaskDetail() {
         status,
         priority,
         due_date: dueDate || undefined,
+        due_time: dueDate && dueTime ? dueTime : undefined,
         location: location || undefined,
         body_notes: notes || undefined,
       })
@@ -41,7 +43,7 @@ export default function TaskDetail() {
       setTimeout(() => setSaved(false), 1500)
     }, 500)
     return () => clearTimeout(t)
-  }, [title, status, priority, dueDate, location, notes])
+  }, [title, status, priority, dueDate, dueTime, location, notes])
 
   return (
     <PageWrapper>
@@ -155,12 +157,23 @@ export default function TaskDetail() {
                   Due date
                 </span>
               </div>
-              <input
-                type="date"
-                value={dueDate}
-                onChange={e => setDueDate(e.target.value)}
-                className="bg-transparent border-none font-body-md text-body-md text-granite focus:ring-0 text-right cursor-pointer"
-              />
+              <div className="flex items-center gap-2">
+                <input
+                  type="date"
+                  value={dueDate}
+                  onChange={e => { setDueDate(e.target.value); if (!e.target.value) setDueTime('') }}
+                  className="bg-transparent border-none font-body-md text-body-md text-granite focus:ring-0 text-right cursor-pointer"
+                />
+                {dueDate && (
+                  <input
+                    type="time"
+                    value={dueTime}
+                    onChange={e => setDueTime(e.target.value)}
+                    placeholder="Time"
+                    className="bg-transparent border-none font-body-md text-body-md text-stone focus:ring-0 text-right cursor-pointer w-[90px]"
+                  />
+                )}
+              </div>
             </div>
 
             {/* Location */}

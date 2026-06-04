@@ -10,7 +10,7 @@ export default function NoteEditor() {
   const { notes, updateNote, deleteNote } = useAppStore()
 
   const note = notes.find(n => n.id === noteId)
-  if (!note) return <div>Note not found</div>
+  if (!note) return null // note deleted — navigate fires on same tick, component unmounts
 
   const [body, setBody] = useState(note.body)
   const [saved, setSaved] = useState(true)
@@ -55,9 +55,10 @@ export default function NoteEditor() {
           </div>
           <motion.button
             onClick={() => {
-              deleteNote(noteId!)
+              const sectionId = note.section_id
               sessionStorage.setItem('nav-direction', 'back')
-              navigate(-1)
+              navigate('/areas/' + sectionId, { replace: true })
+              deleteNote(noteId!)
             }}
             whileTap={{ scale: 0.90 }}
             className="text-madder-red p-2 -mr-2 rounded-full hover:bg-surface-variant"

@@ -16,7 +16,8 @@ export interface Task {
   title: string
   status: TaskStatus
   priority: TaskPriority
-  due_date?: string
+  due_date?: string   // YYYY-MM-DD
+  due_time?: string   // HH:MM — optional specific time
   location?: string
   body_notes?: string
   created_at: string

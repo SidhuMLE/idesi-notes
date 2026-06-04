@@ -157,7 +157,8 @@ export default function Home() {
                   <motion.article
                     key={task.id}
                     whileTap={{ scale: 0.97 }}
-                    className="min-w-[280px] snap-center bg-sandstone rounded-xl p-6 shadow-[0_8px_32px_rgba(34,30,26,0.08)] flex flex-col justify-between shrink-0 border border-pandya-gold/10 relative overflow-hidden"
+                    onClick={() => navigate('/tasks/' + task.id)}
+                    className="min-w-[280px] snap-center bg-sandstone rounded-xl p-6 shadow-[0_8px_32px_rgba(34,30,26,0.08)] flex flex-col justify-between shrink-0 border border-pandya-gold/10 relative overflow-hidden cursor-pointer"
                   >
                     {/* decorative gradient */}
                     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-pandya-gold/5 to-transparent rounded-bl-full pointer-events-none" />
@@ -180,7 +181,7 @@ export default function Home() {
                         {task.due_date ? formatTaskTime(task.due_date) : ''}
                       </span>
                       <button
-                        onClick={() => markDone(task)}
+                        onClick={(e) => { e.stopPropagation(); markDone(task) }}
                         className="w-10 h-10 rounded-full border border-pandya-gold text-granite flex items-center justify-center hover:bg-pandya-gold/10 transition-colors"
                         aria-label="Mark done"
                       >

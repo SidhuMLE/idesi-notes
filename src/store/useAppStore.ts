@@ -17,7 +17,14 @@ interface AppStore {
   tasks: Task[]
   notes: Note[]
 
+  notifDueDateReminders: boolean
+  notifDailySummary: boolean
+  notifDailySummaryTime: string // HH:MM
+
   setDisplayName: (name: string) => void
+  setNotifDueDateReminders: (v: boolean) => void
+  setNotifDailySummary: (v: boolean) => void
+  setNotifDailySummaryTime: (t: string) => void
 
   // Section actions
   addSection: (data: Omit<Section, 'id' | 'created_at' | 'order'>) => void
@@ -51,7 +58,14 @@ export const useAppStore = create<AppStore>()(
       tasks: [],
       notes: [],
 
+      notifDueDateReminders: true,
+      notifDailySummary: false,
+      notifDailySummaryTime: '08:00',
+
       setDisplayName: (name) => set({ displayName: name }),
+      setNotifDueDateReminders: (v) => set({ notifDueDateReminders: v }),
+      setNotifDailySummary: (v) => set({ notifDailySummary: v }),
+      setNotifDailySummaryTime: (t) => set({ notifDailySummaryTime: t }),
 
       addSection: (data) =>
         set((s) => ({

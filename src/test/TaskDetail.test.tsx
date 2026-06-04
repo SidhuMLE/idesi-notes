@@ -58,7 +58,7 @@ it('priority buttons render with lowercase labels', () => {
   expect(screen.getByRole('button', { name: 'high' })).toBeInTheDocument()
 })
 
-it('shows "Task not found" when task id is unknown', () => {
-  renderTask('nonexistent')
-  expect(screen.getByText('Task not found')).toBeInTheDocument()
+it('renders nothing (null) when task id is unknown', () => {
+  const { container } = renderTask('nonexistent')
+  expect(container).toBeEmptyDOMElement()
 })
