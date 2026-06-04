@@ -47,7 +47,7 @@ export default function Areas() {
         </header>
 
         {/* Main — matches Stitch structure exactly */}
-        <main className="flex-1 px-md py-6 flex flex-col gap-4 max-w-lg mx-auto w-full">
+        <main className="flex-1 px-md py-6 flex flex-col gap-4 max-w-[32rem] mx-auto w-full">
 
           {/* Row list — gap-3 between rows, same as Stitch */}
           <div className="flex flex-col gap-3">
@@ -140,7 +140,7 @@ export default function Areas() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-temple-ivory rounded-2xl p-6 w-full max-w-sm shadow-xl border border-pandya-gold/20"
+              className="bg-temple-ivory rounded-2xl p-6 w-full max-w-[24rem] shadow-xl border border-pandya-gold/20"
             >
               <h3 className="font-headline-sm text-headline-sm text-granite mb-2">Delete area?</h3>
               <p className="font-body-md text-body-md text-stone mb-6">
