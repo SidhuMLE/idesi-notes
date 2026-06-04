@@ -57,4 +57,36 @@ writeFileSync(
 )
 console.log('✓ adaptive icon background → temple ivory #FAF5EC')
 
+// 4. Monochrome notification status-bar icon (white-on-transparent silhouette)
+//    Android requires notification smallIcon to be white on transparent — colored icons
+//    render as a white blob in the status bar.
+const notifSizes = {
+  'drawable-mdpi':    24,
+  'drawable-hdpi':    36,
+  'drawable-xhdpi':   48,
+  'drawable-xxhdpi':  72,
+  'drawable-xxxhdpi': 96,
+}
+for (const [dir, size] of Object.entries(notifSizes)) {
+  const outDir = join(base, dir)
+  mkdirSync(outDir, { recursive: true })
+  // Resize icon, extract alpha as mask, composite onto white background → then
+  // flatten to white-on-transparent by keeping only the luma channel as alpha.
+  const { data, info } = await sharp(src)
+    .resize(size, size)
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true })
+  // Set all RGB to white (255,255,255) while keeping the alpha channel as-is
+  for (let i = 0; i < info.width * info.height; i++) {
+    data[i * 4 + 0] = 255
+    data[i * 4 + 1] = 255
+    data[i * 4 + 2] = 255
+  }
+  await sharp(Buffer.from(data), {
+    raw: { width: info.width, height: info.height, channels: 4 },
+  }).png().toFile(join(outDir, 'ic_stat_notify.png'))
+  console.log(`✓ ${dir} notification icon (${size}x${size})`)
+}
+
 console.log('Icons generated.')

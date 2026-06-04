@@ -12,6 +12,12 @@ const config: CapacitorConfig = {
       releaseType: 'APK',
     },
   },
+  plugins: {
+    LocalNotifications: {
+      smallIcon: 'ic_stat_notify',
+      iconColor: '#8B2C24',
+    },
+  },
 };
 
 export default config;

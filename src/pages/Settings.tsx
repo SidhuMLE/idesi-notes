@@ -53,42 +53,18 @@ export default function Settings() {
     notifDueDateReminders, setNotifDueDateReminders,
     notifDailySummary, setNotifDailySummary,
     notifDailySummaryTime, setNotifDailySummaryTime,
-    tasks,
   } = useAppStore()
   const navigate = useNavigate()
 
-  async function handleToggleDueDateReminders(v: boolean) {
-    const { requestNotificationPermission, scheduleDueReminder, cancelDueReminder } = await import('../services/notifications')
-    if (v) {
-      const granted = await requestNotificationPermission()
-      if (!granted) return
-      for (const task of tasks.filter(t => t.due_date && t.status !== 'done')) {
-        await scheduleDueReminder(task)
-      }
-    } else {
-      for (const task of tasks) await cancelDueReminder(task.id)
-    }
-    setNotifDueDateReminders(v)
-  }
-
-  async function handleToggleDailySummary(v: boolean) {
-    const { requestNotificationPermission, scheduleDailySummary, cancelDailySummary } = await import('../services/notifications')
-    if (v) {
-      const granted = await requestNotificationPermission()
-      if (!granted) return
-      await scheduleDailySummary(notifDailySummaryTime, tasks)
-    } else {
-      await cancelDailySummary()
-    }
-    setNotifDailySummary(v)
-  }
-
-  async function handleSummaryTimeChange(t: string) {
-    setNotifDailySummaryTime(t)
-    if (notifDailySummary) {
-      const { scheduleDailySummary } = await import('../services/notifications')
-      await scheduleDailySummary(t, tasks)
-    }
+  // Notification toggles just update the store. useNotificationSync (in App.tsx)
+  // picks up every store change (debounced 2s) and reconciles all notifications.
+  async function handleToggleNotif(
+    toggle: (v: boolean) => void,
+    value: boolean,
+  ) {
+    const { checkOrRequestPermission } = await import('../services/notifications')
+    if (value && !(await checkOrRequestPermission())) return  // ask permission only when enabling
+    toggle(value)
   }
 
   const sensors = useSensors(
@@ -187,7 +163,7 @@ export default function Settings() {
               <div className="flex items-center justify-between p-4 border-b border-pandya-gold/10">
                 <span className="font-body-md text-granite">Due date reminders</span>
                 <button
-                  onClick={() => handleToggleDueDateReminders(!notifDueDateReminders)}
+                  onClick={() => handleToggleNotif(setNotifDueDateReminders, !notifDueDateReminders)}
                   className={`w-12 h-6 rounded-full relative flex items-center transition-colors duration-200 ${
                     notifDueDateReminders ? 'bg-madder-red' : 'bg-stone/30'
                   }`}
@@ -208,7 +184,7 @@ export default function Settings() {
                   </span>
                 </div>
                 <button
-                  onClick={() => handleToggleDailySummary(!notifDailySummary)}
+                  onClick={() => handleToggleNotif(setNotifDailySummary, !notifDailySummary)}
                   className={`w-12 h-6 rounded-full relative flex items-center transition-colors duration-200 ml-4 flex-shrink-0 ${
                     notifDailySummary ? 'bg-madder-red' : 'bg-stone/30'
                   }`}
@@ -227,7 +203,7 @@ export default function Settings() {
                   <input
                     type="time"
                     value={notifDailySummaryTime}
-                    onChange={(e) => handleSummaryTimeChange(e.target.value)}
+                    onChange={(e) => setNotifDailySummaryTime(e.target.value)}
                     className="bg-transparent border-none font-body-md text-body-md text-granite focus:ring-0 text-right cursor-pointer"
                   />
                 </div>

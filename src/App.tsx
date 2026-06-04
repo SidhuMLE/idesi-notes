@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useBackButton } from './hooks/useBackButton'
+import { useNotificationSync } from './hooks/useNotificationSync'
 import { NavProvider, useNav } from './context/NavContext'
 import BottomNav from './components/BottomNav'
 import Home from './pages/Home'
@@ -26,6 +27,7 @@ function AnimatedRoutes() {
   const location = useLocation()
   const { navHidden } = useNav()
   useBackButton()
+  useNotificationSync()
 
   return (
     <>
