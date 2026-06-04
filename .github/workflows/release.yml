@@ -68,6 +68,9 @@ jobs:
       - name: Add Android platform
         run: npx cap add android
 
+      - name: Update Gradle wrapper to Java 21 compatible version
+        run: sed -i 's|distributionUrl=.*|distributionUrl=https\\://services.gradle.org/distributions/gradle-8.9-all.zip|' android/gradle/wrapper/gradle-wrapper.properties
+
       - name: Generate app icons
         run: node scripts/generate-icons.mjs
 
