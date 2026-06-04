@@ -15,7 +15,7 @@ export default function BottomSheet({ open, onClose, children, title, backdropCl
       {open && (
         <>
           <motion.div
-            className={`fixed inset-0 z-50 bg-granite/25 ${backdropClassName ?? ''}`}
+            className={`fixed inset-0 z-[60] bg-granite/25 ${backdropClassName ?? ''}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -23,7 +23,7 @@ export default function BottomSheet({ open, onClose, children, title, backdropCl
             onClick={onClose}
           />
           <motion.div
-            className={`fixed bottom-0 left-0 right-0 z-50 bg-surface rounded-t-2xl shadow-[0_-8px_40px_rgba(34,30,26,0.14)] p-6 space-y-4 ${sheetClassName ?? ''}`}
+            className={`fixed bottom-0 left-0 right-0 z-[60] bg-surface rounded-t-2xl shadow-[0_-8px_40px_rgba(34,30,26,0.14)] p-6 space-y-4 ${sheetClassName ?? ''}`}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}

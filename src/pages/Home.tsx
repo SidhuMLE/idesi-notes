@@ -45,13 +45,6 @@ function formatRelativeDate(dateStr: string): string {
   return `${weekday} ${date} ${month}`
 }
 
-function formatTaskTime(dateStr: string): string {
-  const d = new Date(dateStr)
-  // If the time component is midnight (likely date-only), don't show a time
-  if (d.getHours() === 0 && d.getMinutes() === 0) return formatRelativeDate(dateStr)
-  return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
-}
-
 // ── component ─────────────────────────────────────────────────────────────────
 
 const MotionLink = motion(Link)
@@ -178,7 +171,7 @@ export default function Home() {
                     <div className="mt-8 flex items-center justify-between relative z-10">
                       <span className="font-data-mono text-data-mono text-madder-red flex items-center gap-1">
                         <span className="material-symbols-outlined text-[18px]">schedule</span>
-                        {task.due_date ? formatTaskTime(task.due_date) : ''}
+                        {task.due_time ?? 'Today'}
                       </span>
                       <button
                         onClick={(e) => { e.stopPropagation(); markDone(task) }}

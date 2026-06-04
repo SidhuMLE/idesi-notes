@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useBackButton } from './hooks/useBackButton'
 import { NavProvider, useNav } from './context/NavContext'
 import BottomNav from './components/BottomNav'
@@ -43,8 +43,20 @@ function AnimatedRoutes() {
         </Routes>
       </AnimatePresence>
 
-      {/* BottomNav lives outside AnimatePresence — no more re-mount on route changes */}
-      {showsNav(location.pathname) && !navHidden && <BottomNav />}
+      {/* BottomNav with slide animation when hidden/shown by sheets */}
+      <AnimatePresence initial={false}>
+        {showsNav(location.pathname) && !navHidden && (
+          <motion.div
+            key="bottom-nav"
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 80, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 500, damping: 42 }}
+          >
+            <BottomNav />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
