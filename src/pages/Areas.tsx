@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAppStore } from '../store/useAppStore'
-import BottomNav from '../components/BottomNav'
 import PageWrapper from '../components/PageWrapper'
 
 export default function Areas() {
@@ -18,31 +17,25 @@ export default function Areas() {
 
   return (
     <PageWrapper>
-      <div className="bg-temple-ivory text-granite font-body-md min-h-screen flex flex-col antialiased relative pb-[100px]">
+      <div className="bg-temple-ivory text-granite font-body-md min-h-screen flex flex-col antialiased relative pb-16">
 
-        {/* Header — matches Stitch exactly */}
-        <header className="w-full top-0 sticky bg-temple-ivory z-40 border-b border-pandya-gold/10 transition-shadow">
-          <div className="flex justify-between items-center px-md py-sm h-16 max-w-full mx-auto">
-            {editMode ? (
-              <button
-                onClick={() => setEditMode(false)}
-                className="font-label-md text-label-md text-madder-red px-2 py-1 rounded-full hover:bg-sandstone/50 transition-colors"
-              >
-                Done
-              </button>
-            ) : (
-              <button className="text-granite p-2 rounded-full hover:bg-sandstone/50 active:scale-95 duration-150 transition-colors focus:outline-none">
-                <span className="material-symbols-outlined">menu</span>
-              </button>
-            )}
-            <h1 className="font-headline-sm text-headline-sm text-granite tracking-tight">My Areas</h1>
-            <button
-              onClick={() => setEditMode((v) => !v)}
-              className="text-granite p-2 rounded-full hover:bg-sandstone/50 active:scale-95 duration-150 transition-colors focus:outline-none"
-              aria-label="More options"
-            >
-              <span className="material-symbols-outlined">more_vert</span>
-            </button>
+        {/* Header */}
+        <header className="w-full top-0 sticky bg-temple-ivory z-40 border-b border-pandya-gold/10">
+          <div className="flex justify-between items-center px-4 py-2 h-14">
+            <h1 className="font-headline-sm text-headline-sm text-madder-red">My Areas</h1>
+            <div className="flex items-center gap-1">
+              {editMode ? (
+                <button onClick={() => setEditMode(false)}
+                  className="font-label-md text-label-md text-madder-red px-3 py-1.5">
+                  Done
+                </button>
+              ) : (
+                <button onClick={() => setEditMode(v => !v)}
+                  className="text-stone p-2 rounded-full hover:bg-sandstone/50 active:scale-95 duration-150 transition-colors">
+                  <span className="material-symbols-outlined text-[22px]">more_vert</span>
+                </button>
+              )}
+            </div>
           </div>
         </header>
 
@@ -164,7 +157,6 @@ export default function Areas() {
           </div>
         )}
 
-        <BottomNav />
       </div>
     </PageWrapper>
   )

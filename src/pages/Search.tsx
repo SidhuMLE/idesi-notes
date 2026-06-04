@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import BottomNav from '../components/BottomNav'
 import PageWrapper from '../components/PageWrapper'
 import { useAppStore } from '../store/useAppStore'
 
@@ -80,7 +79,7 @@ export default function Search() {
 
   return (
     <PageWrapper>
-      <div className="min-h-screen bg-temple-ivory pb-32">
+      <div className="min-h-screen bg-temple-ivory pb-16">
         {/* Header */}
         <header className="w-full top-0 sticky z-40 bg-temple-ivory border-b border-pandya-gold/10 flex justify-between items-center px-4 py-2">
           <button
@@ -89,7 +88,7 @@ export default function Search() {
           >
             <span className="material-symbols-outlined">arrow_back</span>
           </button>
-          <h1 className="text-headline-sm font-headline-sm text-granite">Search</h1>
+          <h1 className="font-headline-sm text-headline-sm text-madder-red">Search</h1>
           <div className="w-10" />
         </header>
 
@@ -250,7 +249,6 @@ export default function Search() {
           )}
         </main>
 
-        <BottomNav />
       </div>
     </PageWrapper>
   )

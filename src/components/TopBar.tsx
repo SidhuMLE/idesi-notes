@@ -28,7 +28,7 @@ export default function TopBar({ title, showBack = false, actions }: Props) {
             <span className="material-symbols-outlined">arrow_back</span>
           </motion.button>
         )}
-        <h1 className="font-headline-sm text-headline-sm text-primary truncate">
+        <h1 className="font-headline-sm text-headline-sm text-madder-red">
           {title}
         </h1>
       </div>

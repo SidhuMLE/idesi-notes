@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import BottomNav from '../components/BottomNav'
 import TopBar from '../components/TopBar'
 import BottomSheet from '../components/BottomSheet'
 import PageWrapper from '../components/PageWrapper'
 import { useAppStore } from '../store/useAppStore'
+import { useNav } from '../context/NavContext'
 import type { Task } from '../types'
 
 // ── helpers ──────────────────────────────────────────────────────────────────
@@ -58,6 +58,7 @@ const MotionLink = motion(Link)
 
 export default function Home() {
   const navigate = useNavigate()
+  const { hideNav, showNav } = useNav()
   const { sections, tasksDueToday, openTaskCountBySection, updateTask, addTask } =
     useAppStore()
 
@@ -108,6 +109,7 @@ export default function Home() {
     setQuickTitle('')
     setQuickSection('')
     setQuickDate('')
+    showNav()
     sessionStorage.setItem('nav-direction', 'forward')
     navigate('/areas/' + quickSection)
   }
@@ -120,7 +122,7 @@ export default function Home() {
 
   return (
     <PageWrapper>
-      <div className="bg-temple-ivory text-granite font-body-md antialiased min-h-screen pb-24 selection:bg-pandya-gold/20">
+      <div className="bg-temple-ivory text-granite font-body-md antialiased min-h-screen pb-16 selection:bg-pandya-gold/20">
         <TopBar title="Idesi Notes" />
 
         <main className="px-4 max-w-5xl mx-auto space-y-8 pt-6">
@@ -290,15 +292,15 @@ export default function Home() {
         <motion.button
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.92 }}
-          onClick={() => setShowQuickAdd(true)}
-          className="fixed bottom-24 right-4 w-14 h-14 bg-madder-red text-temple-ivory rounded-2xl shadow-[0_8px_24px_rgba(139,44,36,0.3)] flex items-center justify-center z-40"
+          onClick={() => { setShowQuickAdd(true); hideNav() }}
+          className="fixed bottom-20 right-4 w-14 h-14 bg-madder-red text-temple-ivory rounded-2xl shadow-[0_8px_24px_rgba(139,44,36,0.3)] flex items-center justify-center z-40"
           aria-label="Quick add task"
         >
           <span className="material-symbols-outlined text-[28px]">add</span>
         </motion.button>
 
         {/* Quick-add bottom sheet */}
-        <BottomSheet open={showQuickAdd} onClose={() => setShowQuickAdd(false)} title="Quick Add Task">
+        <BottomSheet open={showQuickAdd} onClose={() => { setShowQuickAdd(false); showNav() }} title="Quick Add Task" backdropClassName="z-[59]" sheetClassName="z-[60]">
           <input
             autoFocus
             value={quickTitle}
@@ -347,7 +349,6 @@ export default function Home() {
           ))}
         </BottomSheet>
 
-        <BottomNav />
       </div>
     </PageWrapper>
   )

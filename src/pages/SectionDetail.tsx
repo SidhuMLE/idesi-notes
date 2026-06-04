@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAppStore } from '../store/useAppStore'
 import type { Task, TaskPriority } from '../types'
-import BottomNav from '../components/BottomNav'
 import BottomSheet from '../components/BottomSheet'
 import PageWrapper from '../components/PageWrapper'
 
@@ -135,7 +134,7 @@ export default function SectionDetail() {
 
   return (
     <PageWrapper>
-      <div className="bg-temple-ivory min-h-screen flex flex-col pb-20">
+      <div className="bg-temple-ivory min-h-screen flex flex-col pb-16">
         {/* Top app bar */}
         <header className="w-full top-0 sticky bg-surface z-40 border-b border-outline-variant/20">
           <div className="flex justify-between items-center px-4 py-2">
@@ -349,13 +348,11 @@ export default function SectionDetail() {
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.92 }}
           onClick={() => activeTab === 'tasks' ? setShowAddTask(true) : handleNewNote()}
-          className="fixed bottom-[88px] right-6 w-14 h-14 bg-madder-red text-temple-ivory rounded-full shadow-[0_4px_20px_rgba(139,44,36,0.3)] flex items-center justify-center hover:bg-primary transition-colors z-40"
+          className="fixed bottom-20 right-6 w-14 h-14 bg-madder-red text-temple-ivory rounded-full shadow-[0_4px_20px_rgba(139,44,36,0.3)] flex items-center justify-center hover:bg-primary transition-colors z-40"
           aria-label={activeTab === 'tasks' ? 'New task' : 'New note'}
         >
           <span className="material-symbols-outlined text-[28px]">add</span>
         </motion.button>
-
-        <BottomNav />
 
         {/* ── Add Task Bottom Sheet ── */}
         <BottomSheet
