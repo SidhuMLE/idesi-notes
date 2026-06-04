@@ -69,7 +69,7 @@ jobs:
         run: npx cap add android
 
       - name: Generate app icons
-        run: npx @capacitor/assets generate --android --iconPath assets/icon.png --androidOutput android/app/src/main/res
+        run: npx @capacitor/assets generate --android
 
       - name: Sync Capacitor
         run: npx cap sync android
