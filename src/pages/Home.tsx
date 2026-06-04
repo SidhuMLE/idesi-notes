@@ -338,7 +338,7 @@ export default function Home() {
         </BottomSheet>
 
         {/* Area picker bottom sheet */}
-        <BottomSheet open={showAreaPicker} onClose={() => setShowAreaPicker(false)} title="Select Area">
+        <BottomSheet open={showAreaPicker} onClose={() => setShowAreaPicker(false)} title="Select Area" backdropClassName="z-[69]" sheetClassName="z-[70]">
           {sections.map(s => (
             <button key={s.id} onClick={() => { setQuickSection(s.id); setShowAreaPicker(false) }}
               className={`w-full flex items-center gap-3 py-3 px-2 rounded-lg transition-colors text-left ${quickSection === s.id ? 'bg-sandstone' : 'hover:bg-sandstone/50'}`}>
