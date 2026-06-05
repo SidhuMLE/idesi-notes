@@ -89,6 +89,12 @@ export default function Home() {
     return sections.find((s) => s.id === task.section_id)?.color ?? '#8B2C24'
   }
 
+  const priorityDotColor: Record<string, string> = {
+    high: 'bg-madder-red',
+    medium: 'bg-pandya-gold',
+    low: 'bg-peacock',
+  }
+
   function markDone(task: Task) {
     updateTask(task.id, { status: 'done' })
   }
@@ -214,7 +220,7 @@ export default function Home() {
                     onClick={() => navigate('/tasks/' + task.id)}
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-sandstone/50 transition-colors border-b border-pandya-gold/10 last:border-0 group cursor-pointer"
                   >
-                    <div className="w-2 h-2 rounded-full mt-1 self-start shrink-0" style={{ backgroundColor: getSectionColor(task) }} />
+                    <div className={`w-2 h-2 rounded-full mt-1 self-start shrink-0 ${priorityDotColor[task.priority] ?? 'bg-stone'}`} />
                     <div className="flex-1 min-w-0">
                       <p className="font-label-md text-label-md text-stone uppercase tracking-wide mb-1">
                         {getSectionName(task)}
