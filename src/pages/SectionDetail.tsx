@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAppStore } from '../store/useAppStore'
 import type { Task, TaskPriority } from '../types'
@@ -54,6 +54,7 @@ const PRIORITY_OPTIONS: { label: string; value: TaskPriority }[] = [
 export default function SectionDetail() {
   const navigate = useNavigate()
   const { sectionId } = useParams<{ sectionId: string }>()
+  const location = useLocation()
 
   const sections = useAppStore((s) => s.sections)
   const tasksBySection = useAppStore((s) => s.tasksBySection)
@@ -65,7 +66,9 @@ export default function SectionDetail() {
   const addTask = useAppStore((s) => s.addTask)
   const deleteSection = useAppStore((s) => s.deleteSection)
 
-  const [activeTab, setActiveTab] = useState<'tasks' | 'notes'>('tasks')
+  const [activeTab, setActiveTab] = useState<'tasks' | 'notes'>(
+    (location.state as { tab?: string } | null)?.tab === 'notes' ? 'notes' : 'tasks'
+  )
   const [filter, setFilter] = useState<FilterLabel>('All')
   const [showDone, setShowDone] = useState(false)
 
