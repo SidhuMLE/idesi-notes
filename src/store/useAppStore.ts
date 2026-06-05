@@ -22,6 +22,7 @@ interface AppStore {
   notifDailySummaryTime: string // HH:MM
 
   setDisplayName: (name: string) => void
+  clearAllData: () => void
   setNotifDueDateReminders: (v: boolean) => void
   setNotifDailySummary: (v: boolean) => void
   setNotifDailySummaryTime: (t: string) => void
@@ -63,6 +64,7 @@ export const useAppStore = create<AppStore>()(
       notifDailySummaryTime: '08:00',
 
       setDisplayName: (name) => set({ displayName: name }),
+      clearAllData: () => set({ displayName: '', sections: [], tasks: [], notes: [] }),
       setNotifDueDateReminders: (v) => set({ notifDueDateReminders: v }),
       setNotifDailySummary: (v) => set({ notifDailySummary: v }),
       setNotifDailySummaryTime: (t) => set({ notifDailySummaryTime: t }),

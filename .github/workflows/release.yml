@@ -74,6 +74,12 @@ jobs:
       - name: Patch Gradle wrapper to 8.13 (Capacitor template ships 8.0.2, AGP requires 8.13+)
         run: sed -i 's|distributionUrl=.*|distributionUrl=https\\://services.gradle.org/distributions/gradle-8.13-all.zip|' android/gradle/wrapper/gradle-wrapper.properties
 
+      - name: Disable Android Auto Backup (prevents old data restoring on reinstall)
+        run: |
+          sed -i 's/android:allowBackup="true"/android:allowBackup="false"/' android/app/src/main/AndroidManifest.xml
+          grep -q 'android:allowBackup' android/app/src/main/AndroidManifest.xml || \
+            sed -i 's/<application/<application android:allowBackup="false"/' android/app/src/main/AndroidManifest.xml
+
       - name: Generate app icons
         run: node scripts/generate-icons.mjs
 

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { version as appVersion } from '../../package.json'
 import { motion } from 'framer-motion'
@@ -20,6 +21,7 @@ import {
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import PageWrapper from '../components/PageWrapper'
+import BottomSheet from '../components/BottomSheet'
 import { useAppStore } from '../store/useAppStore'
 import type { Section } from '../types'
 
@@ -53,8 +55,10 @@ export default function Settings() {
     notifDueDateReminders, setNotifDueDateReminders,
     notifDailySummary, setNotifDailySummary,
     notifDailySummaryTime, setNotifDailySummaryTime,
+    clearAllData,
   } = useAppStore()
   const navigate = useNavigate()
+  const [showClearConfirm, setShowClearConfirm] = useState(false)
 
   // Notification toggles just update the store. useNotificationSync (in App.tsx)
   // picks up every store change (debounced 2s) and reconciles all notifications.
@@ -224,7 +228,10 @@ export default function Settings() {
                 <span className="material-symbols-outlined text-stone">download</span>
                 <span className="font-body-md text-granite">Export all data</span>
               </button>
-              <button className="flex items-center gap-3 p-4 w-full text-left hover:bg-error-container/20 transition-colors">
+              <button
+                onClick={() => setShowClearConfirm(true)}
+                className="flex items-center gap-3 p-4 w-full text-left hover:bg-error-container/20 transition-colors"
+              >
                 <span className="material-symbols-outlined text-kumkum">delete</span>
                 <span className="font-body-md text-kumkum">Delete all data</span>
               </button>
@@ -237,6 +244,26 @@ export default function Settings() {
           </p>
         </main>
       </div>
+
+      <BottomSheet open={showClearConfirm} onClose={() => setShowClearConfirm(false)} title="Delete all data?">
+        <p className="font-body-md text-body-md text-stone">
+          All areas, tasks, and notes will be permanently deleted. Your name and settings are kept.
+        </p>
+        <div className="flex gap-3">
+          <button
+            onClick={() => setShowClearConfirm(false)}
+            className="flex-1 py-3 border border-stone/30 rounded-xl font-label-md text-label-md text-granite"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={() => { clearAllData(); setShowClearConfirm(false) }}
+            className="flex-1 py-3 bg-kumkum text-white rounded-xl font-label-md text-label-md"
+          >
+            Delete everything
+          </button>
+        </div>
+      </BottomSheet>
     </PageWrapper>
   )
 }

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { flushSync } from 'react-dom'
 import { useNavigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAppStore } from '../store/useAppStore'
 import PageWrapper from '../components/PageWrapper'
+import BottomSheet from '../components/BottomSheet'
 
 export default function NoteEditor() {
   const { noteId } = useParams<{ noteId: string }>()
@@ -10,13 +12,14 @@ export default function NoteEditor() {
   const { notes, updateNote, deleteNote } = useAppStore()
 
   const note = notes.find(n => n.id === noteId)
-  if (!note) return null // note deleted — navigate fires on same tick, component unmounts
 
-  const [body, setBody] = useState(note.body)
+  const [body, setBody] = useState(note?.body ?? '')
   const [saved, setSaved] = useState(true)
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
 
   // Auto-save
   useEffect(() => {
+    if (!note) return
     setSaved(false)
     const t = setTimeout(() => {
       updateNote(noteId!, { body })
@@ -24,6 +27,22 @@ export default function NoteEditor() {
     }, 800)
     return () => clearTimeout(t)
   }, [body])
+
+  // Navigate away before deleting so the component never renders with a null note.
+  // flushSync forces the navigation to flush synchronously before deleteNote runs,
+  // preventing the batched render that caused the blank screen.
+  function handleConfirmDelete() {
+    const sectionId = note?.section_id
+    const id = noteId!
+    setShowDeleteConfirm(false)
+    sessionStorage.setItem('nav-direction', 'back')
+    flushSync(() => {
+      navigate('/areas/' + sectionId, { replace: true, state: { tab: 'notes' } })
+    })
+    deleteNote(id)
+  }
+
+  if (!note) return null
 
   const dateTitle = new Date(note.created_at).toLocaleDateString('en-GB', {
     weekday: 'short',
@@ -57,12 +76,7 @@ export default function NoteEditor() {
             </span>
           </div>
           <motion.button
-            onClick={() => {
-              const sectionId = note.section_id
-              sessionStorage.setItem('nav-direction', 'back')
-              navigate('/areas/' + sectionId, { replace: true })
-              deleteNote(noteId!)
-            }}
+            onClick={() => setShowDeleteConfirm(true)}
             whileTap={{ scale: 0.90 }}
             className="text-madder-red p-2 -mr-2 rounded-full hover:bg-surface-variant"
           >
@@ -81,6 +95,24 @@ export default function NoteEditor() {
           <div className="h-[1px] w-full bg-pandya-gold/10 absolute bottom-0 left-0" />
         </main>
       </div>
+
+      <BottomSheet open={showDeleteConfirm} onClose={() => setShowDeleteConfirm(false)} title="Delete note?">
+        <p className="font-body-md text-body-md text-stone">This note will be permanently deleted.</p>
+        <div className="flex gap-3">
+          <button
+            onClick={() => setShowDeleteConfirm(false)}
+            className="flex-1 py-3 border border-stone/30 rounded-xl font-label-md text-label-md text-granite"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleConfirmDelete}
+            className="flex-1 py-3 bg-kumkum text-white rounded-xl font-label-md text-label-md"
+          >
+            Delete
+          </button>
+        </div>
+      </BottomSheet>
     </PageWrapper>
   )
 }
