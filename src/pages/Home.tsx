@@ -85,6 +85,10 @@ export default function Home() {
     return sections.find((s) => s.id === task.section_id)?.name ?? 'Unknown'
   }
 
+  function getSectionColor(task: Task): string {
+    return sections.find((s) => s.id === task.section_id)?.color ?? '#8B2C24'
+  }
+
 
   const priorityDotColor: Record<string, string> = {
     high: 'bg-madder-red',
@@ -155,6 +159,8 @@ export default function Home() {
                     onClick={() => navigate('/tasks/' + task.id)}
                     className="min-w-[280px] snap-center bg-sandstone rounded-xl p-6 shadow-[0_8px_32px_rgba(34,30,26,0.08)] flex flex-col justify-between shrink-0 border border-pandya-gold/10 relative overflow-hidden cursor-pointer"
                   >
+                    {/* area colour accent strip */}
+                    <div className="absolute top-0 left-0 w-1 h-full rounded-l-xl pointer-events-none" style={{ backgroundColor: getSectionColor(task) }} />
                     {/* decorative gradient */}
                     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-pandya-gold/5 to-transparent rounded-bl-full pointer-events-none" />
 
@@ -215,6 +221,7 @@ export default function Home() {
                     key={task.id}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => navigate('/tasks/' + task.id)}
+                    style={{ borderLeft: `3px solid ${getSectionColor(task)}` }}
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-sandstone/50 transition-colors border-b border-pandya-gold/10 last:border-0 group cursor-pointer"
                   >
                     <div className={`w-2 h-2 rounded-full mt-1 self-start shrink-0 ${priorityDotColor[task.priority] ?? 'bg-stone'}`} />
