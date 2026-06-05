@@ -22,6 +22,9 @@ jobs:
           node-version: '24'
           cache: 'npm'
 
+      - name: Set app version from git tag
+        run: sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${GITHUB_REF_NAME#v}\"/" package.json
+
       - name: Install dependencies
         run: npm ci
 
@@ -58,6 +61,9 @@ jobs:
 
       - name: Install Android SDK platform 35
         run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Set app version from git tag
+        run: sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${GITHUB_REF_NAME#v}\"/" package.json
 
       - name: Install dependencies
         run: npm ci

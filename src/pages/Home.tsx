@@ -85,6 +85,10 @@ export default function Home() {
     return sections.find((s) => s.id === task.section_id)?.name ?? 'Unknown'
   }
 
+  function getSectionColor(task: Task): string {
+    return sections.find((s) => s.id === task.section_id)?.color ?? '#8B2C24'
+  }
+
   function markDone(task: Task) {
     updateTask(task.id, { status: 'done' })
   }
@@ -107,11 +111,6 @@ export default function Home() {
     navigate('/areas/' + quickSection)
   }
 
-  const priorityDotColor: Record<string, string> = {
-    high: 'bg-madder-red',
-    medium: 'bg-pandya-gold',
-    low: 'bg-peacock',
-  }
 
   return (
     <PageWrapper>
@@ -158,7 +157,7 @@ export default function Home() {
 
                     <div className="space-y-4 relative z-10">
                       <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-madder-red" />
+                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: getSectionColor(task) }} />
                         <span className="font-label-md text-label-md text-stone uppercase tracking-widest">
                           {getSectionName(task)}
                         </span>
@@ -215,7 +214,7 @@ export default function Home() {
                     onClick={() => navigate('/tasks/' + task.id)}
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-sandstone/50 transition-colors border-b border-pandya-gold/10 last:border-0 group cursor-pointer"
                   >
-                    <div className={`w-2 h-2 rounded-full mt-1 self-start shrink-0 ${priorityDotColor[task.priority] ?? 'bg-stone'}`} />
+                    <div className="w-2 h-2 rounded-full mt-1 self-start shrink-0" style={{ backgroundColor: getSectionColor(task) }} />
                     <div className="flex-1 min-w-0">
                       <p className="font-label-md text-label-md text-stone uppercase tracking-wide mb-1">
                         {getSectionName(task)}
@@ -254,7 +253,7 @@ export default function Home() {
                   whileTap={{ scale: 0.97 }}
                   className="min-w-[140px] aspect-square bg-surface rounded-xl p-4 border border-pandya-gold/20 flex flex-col items-center justify-center gap-3 hover:bg-sandstone transition-colors shadow-[0_4px_16px_rgba(34,30,26,0.04)] shrink-0"
                 >
-                  <div className="w-12 h-12 rounded-full bg-sandstone flex items-center justify-center text-madder-red">
+                  <div className="w-12 h-12 rounded-full bg-sandstone flex items-center justify-center" style={{ color: section.color }}>
                     <span className="material-symbols-outlined text-[24px]">{section.icon}</span>
                   </div>
                   <div className="text-center">

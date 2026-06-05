@@ -133,6 +133,7 @@ export default function SectionDetail() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.2 }}
           onClick={() => navigate('/tasks/' + task.id)}
+          style={{ borderLeft: `3px solid ${section?.color ?? '#8B2C24'}` }}
           className={`bg-sandstone rounded-xl p-4 shadow-[0_4px_12px_rgba(34,30,26,0.06)] flex items-start gap-3 border border-transparent cursor-pointer active:scale-[0.98] transition-transform ${dimmed ? 'opacity-60' : ''}`}
         >
           <motion.button
@@ -196,7 +197,7 @@ export default function SectionDetail() {
             </button>
             <div className="flex items-center gap-2 text-primary">
               {section?.icon && (
-                <span className="material-symbols-outlined text-[20px]">{section.icon}</span>
+                <span className="material-symbols-outlined text-[20px]" style={{ color: section?.color }}>{section.icon}</span>
               )}
               <h1 className="font-headline-sm text-headline-sm font-display tracking-tight">
                 {section?.name ?? 'Area'}
