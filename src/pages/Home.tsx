@@ -85,9 +85,6 @@ export default function Home() {
     return sections.find((s) => s.id === task.section_id)?.name ?? 'Unknown'
   }
 
-  function getSectionColor(task: Task): string {
-    return sections.find((s) => s.id === task.section_id)?.color ?? '#8B2C24'
-  }
 
   const priorityDotColor: Record<string, string> = {
     high: 'bg-madder-red',
@@ -163,7 +160,7 @@ export default function Home() {
 
                     <div className="space-y-4 relative z-10">
                       <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: getSectionColor(task) }} />
+                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: { high: '#8B2C24', medium: '#C8962C', low: '#155F5B' }[task.priority] }} />
                         <span className="font-label-md text-label-md text-stone uppercase tracking-widest">
                           {getSectionName(task)}
                         </span>
