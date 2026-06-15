@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { flushSync } from 'react-dom'
 import { useNavigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAppStore } from '../store/useAppStore'
@@ -12,23 +13,26 @@ export default function TaskDetail() {
   const { tasks, sections, updateTask, deleteTask } = useAppStore()
 
   const task = tasks.find(t => t.id === taskId)
-  if (!task) return null
 
-  // Local state mirrors task fields
-  const [title, setTitle] = useState(task.title)
-  const [status, setStatus] = useState<TaskStatus>(task.status)
-  const [priority, setPriority] = useState<TaskPriority>(task.priority)
-  const [dueDate, setDueDate] = useState(task.due_date || '')
-  const [dueTime, setDueTime] = useState(task.due_time || '')
-  const [location, setLocation] = useState(task.location || '')
-  const [notes, setNotes] = useState(task.body_notes || '')
+  // All hooks run unconditionally so the hook count never changes between renders.
+  // When the task is deleted and this component briefly re-renders before unmounting,
+  // state initializers are ignored (they only apply on first mount) and the effect
+  // guard below keeps auto-save from firing on a ghost render.
+  const [title, setTitle] = useState(task?.title ?? '')
+  const [status, setStatus] = useState<TaskStatus>(task?.status ?? 'open')
+  const [priority, setPriority] = useState<TaskPriority>(task?.priority ?? 'medium')
+  const [dueDate, setDueDate] = useState(task?.due_date ?? '')
+  const [dueTime, setDueTime] = useState(task?.due_time ?? '')
+  const [location, setLocation] = useState(task?.location ?? '')
+  const [notes, setNotes] = useState(task?.body_notes ?? '')
   const [saved, setSaved] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
 
-  const section = sections.find(s => s.id === task.section_id)
+  const section = sections.find(s => s.id === task?.section_id)
 
-  // Auto-save with debounce
+  // Auto-save with debounce — skip if task no longer exists
   useEffect(() => {
+    if (!task) return
     const t = setTimeout(() => {
       updateTask(taskId!, {
         title,
@@ -44,6 +48,9 @@ export default function TaskDetail() {
     }, 500)
     return () => clearTimeout(t)
   }, [title, status, priority, dueDate, dueTime, location, notes])
+
+  // Early return AFTER all hooks — safe per Rules of Hooks
+  if (!task) return null
 
   return (
     <PageWrapper>
@@ -214,9 +221,11 @@ export default function TaskDetail() {
             </button>
             <button
               onClick={() => {
-                deleteTask(taskId!)
+                const id = taskId!
+                setShowDelete(false)
                 sessionStorage.setItem('nav-direction', 'back')
-                navigate(-1)
+                flushSync(() => { navigate(-1) })
+                deleteTask(id)
               }}
               className="flex-1 py-3 bg-error text-white rounded-lg font-label-md text-label-md"
             >
